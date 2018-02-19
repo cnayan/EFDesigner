@@ -23,27 +23,27 @@ namespace Sawczyn.EFDesigner.EFModel
 
       private readonly Guid guidEFDiagramMenuCmdSet = new Guid("31178ecb-5da7-46cc-bd4a-ce4e5420bd3e");
 
-      private const int cmdidFind              = 0x0001;
-      private const int cmdidLayoutDiagram     = 0x0002;
-      private const int cmdidHideShape         = 0x0003;
-      private const int cmdidShowShape         = 0x0004;
-      private const int cmdidGenerateCode      = 0x0005;
+      //private const int cmdidFind              = 0x0001;
+      private const int cmdidLayoutDiagram = 0x0002;
+      private const int cmdidHideShape = 0x0003;
+      private const int cmdidShowShape = 0x0004;
+      private const int cmdidGenerateCode = 0x0005;
       private const int cmdidAddCodeProperties = 0x0006;
-      private const int cmdidSaveAsImage       = 0x0007;
-      
-      private const int cmdidSelectClasses     = 0x0101;
-      private const int cmdidSelectEnums       = 0x0102;
-      private const int cmdidSelectAssocs      = 0x0103;
-      private const int cmdidSelectUnidir      = 0x0104;
-      private const int cmdidSelectBidir       = 0x0105;
+      private const int cmdidSaveAsImage = 0x0007;
+
+      private const int cmdidSelectClasses = 0x0101;
+      private const int cmdidSelectEnums = 0x0102;
+      private const int cmdidSelectAssocs = 0x0103;
+      private const int cmdidSelectUnidir = 0x0104;
+      private const int cmdidSelectBidir = 0x0105;
 
       protected override IList<MenuCommand> GetMenuCommands()
       {
          IList<MenuCommand> commands = base.GetMenuCommands();
 
-         DynamicStatusMenuCommand findCommand =
-            new DynamicStatusMenuCommand(OnStatusFind, OnMenuFind, new CommandID(guidEFDiagramMenuCmdSet, cmdidFind));
-         commands.Add(findCommand);
+         //DynamicStatusMenuCommand findCommand =
+         //   new DynamicStatusMenuCommand(OnStatusFind, OnMenuFind, new CommandID(guidEFDiagramMenuCmdSet, cmdidFind));
+         //commands.Add(findCommand);
 
          DynamicStatusMenuCommand addAttributesCommand =
             new DynamicStatusMenuCommand(OnStatusAddProperties, OnMenuAddProperties, new CommandID(guidEFDiagramMenuCmdSet, cmdidAddCodeProperties));
@@ -93,29 +93,29 @@ namespace Sawczyn.EFDesigner.EFModel
          return commands;
       }
 
-      #region Find
+      //#region Find
 
-      private void OnStatusFind(object sender, EventArgs e)
-      {
-         if (sender is MenuCommand command)
-         {
-            command.Visible = true;
-            command.Enabled = true;
-            command.Visible = false;
-            command.Enabled = false;
-         }
-      }
+      //private void OnStatusFind(object sender, EventArgs e)
+      //{
+      //   if (sender is MenuCommand command)
+      //   {
+      //      command.Visible = true;
+      //      command.Enabled = true;
+      //      command.Visible = false;
+      //      command.Enabled = false;
+      //   }
+      //}
 
-      private void OnMenuFind(object sender, EventArgs e)
-      {
-         // TODO: Implement OnMenuFind
-         
-         // find matching class name, property name, association endpoint name, enum name, or enum value name
-         // output to tool window
-         // bind data to each line of output so can highlight proper shape when entry is clicked (or double clicked)
-      }
-      
-      #endregion Find
+      //private void OnMenuFind(object sender, EventArgs e)
+      //{
+      //   // TODO: Implement OnMenuFind
+
+      //   // find matching class name, property name, association endpoint name, enum name, or enum value name
+      //   // output to tool window
+      //   // bind data to each line of output so can highlight proper shape when entry is clicked (or double clicked)
+      //}
+
+      //#endregion Find
       #region Add Properties
 
       private void OnStatusAddProperties(object sender, EventArgs e)
@@ -129,38 +129,42 @@ namespace Sawczyn.EFDesigner.EFModel
 
       private void OnMenuAddProperties(object sender, EventArgs e)
       {
-         FindForm findForm = new FindForm();
-         if (findForm.ShowDialog() == DialogResult.OK)
-         {
-            
-         }
          NodeShape shapeElement = CurrentSelection.OfType<ClassShape>().FirstOrDefault();
-         
+         string errorMessage = null;
+
          if (shapeElement?.ModelElement is ModelClass element)
          {
-            AddCodeForm codeForm = new AddCodeForm(element);
-            if (codeForm.ShowDialog() == DialogResult.OK)
+            do
             {
-               using (Transaction tx = element.Store.TransactionManager.BeginTransaction("AddProperties"))
+               AddCodeForm codeForm = new AddCodeForm(element, element.ModelRoot, errorMessage);
+               
+               if (codeForm.ShowDialog() == DialogResult.OK)
                {
-                  element.Attributes.Clear();
-                  IEnumerable<ModelAttribute> modelAttributes =
-                     codeForm.Lines
-                             .Select(s => ModelAttribute.Parse(element.ModelRoot, s))
-                             .Where(attr => attr != null)
-                             .Select(parseResult => new ModelAttribute(element.Store,
-                                                                       new PropertyAssignment(ModelAttribute.NameDomainPropertyId, parseResult.Name),
-                                                                       new PropertyAssignment(ModelAttribute.TypeDomainPropertyId, parseResult.Type ?? "String"),
-                                                                       new PropertyAssignment(ModelAttribute.RequiredDomainPropertyId, parseResult.Required ?? true),
-                                                                       new PropertyAssignment(ModelAttribute.MaxLengthDomainPropertyId, parseResult.MaxLength ?? 0),
-                                                                       new PropertyAssignment(ModelAttribute.InitialValueDomainPropertyId, parseResult.InitialValue),
-                                                                       new PropertyAssignment(ModelAttribute.IsIdentityDomainPropertyId, parseResult.IsIdentity),
-                                                                       new PropertyAssignment(ModelAttribute.SetterVisibilityDomainPropertyId, parseResult.SetterVisibility ?? SetterAccessModifier.Public)
-                                                                       ));
-                  element.Attributes.AddRange(modelAttributes);
-                  tx.Commit();
+                  errorMessage = null;
+
+                  List<ModelAttribute.ParseResult> parseResults = codeForm.Lines.Select(s => ModelAttribute.Parse(element.ModelRoot, s)).ToList();
+                  ModelAttribute.ParseResult firstError = parseResults.FirstOrDefault(r => !string.IsNullOrEmpty(r.ErrorMessage));
+
+                     using (Transaction tx = element.Store.TransactionManager.BeginTransaction("AddProperties"))
+                     {
+                        element.Attributes.Clear();
+                        List<ModelAttribute> modelAttributes =
+                           codeForm.ParseResults.Select(parseResult => new ModelAttribute(element.Store,
+                                                                                 new PropertyAssignment(ModelAttribute.NameDomainPropertyId, parseResult.Name),
+                                                                                 new PropertyAssignment(ModelAttribute.TypeDomainPropertyId, parseResult.Type ?? "String"),
+                                                                                 new PropertyAssignment(ModelAttribute.RequiredDomainPropertyId, parseResult.Required ?? true),
+                                                                                 new PropertyAssignment(ModelAttribute.MaxLengthDomainPropertyId, parseResult.MaxLength ?? 0),
+                                                                                 new PropertyAssignment(ModelAttribute.InitialValueDomainPropertyId, parseResult.InitialValue),
+                                                                                 new PropertyAssignment(ModelAttribute.IsIdentityDomainPropertyId, parseResult.IsIdentity),
+                                                                                 new PropertyAssignment(ModelAttribute.SetterVisibilityDomainPropertyId, parseResult.SetterVisibility ?? SetterAccessModifier.Public)
+                                                                                ))
+                                       .ToList();
+                        element.Attributes.AddRange(modelAttributes);
+                        tx.Commit();
+                     }
+
                }
-            }
+            } while (errorMessage != null);
          }
       }
 
@@ -292,7 +296,7 @@ namespace Sawczyn.EFDesigner.EFModel
          {
             Bitmap bitmap = currentDiagram.CreateBitmap(currentDiagram.NestedChildShapes,
                                                         Diagram.CreateBitmapPreference.FavorClarityOverSmallSize);
-            
+
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
                dlg.Filter = "BMP files (*.bmp)|*.bmp|GIF files (*.gif)|*.gif|JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png|TIFF files (*.tiff)|*.tiff|WMF files (*.wmf)|*.wmf";

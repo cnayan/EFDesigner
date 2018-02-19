@@ -962,13 +962,13 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Don't generate code to handle concurrency
 		/// </summary>
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Concurrency/None.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		None = 0,
+		None = 1,
 		/// <summary>
 		/// Optimistic
 		/// Generate timestamp columns to handle optimistic concurrency
 		/// </summary>
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Concurrency/Optimistic.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		Optimistic = 1,
+		Optimistic = 2,
 	}
 }
 namespace Sawczyn.EFDesigner.EFModel

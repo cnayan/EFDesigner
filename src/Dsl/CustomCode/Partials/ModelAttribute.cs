@@ -253,41 +253,50 @@ namespace Sawczyn.EFDesigner.EFModel
 
       // Note: gave some thought to making this be an LALR parser, but that's WAY overkill for what needs done here. Regex is good enough.
 
-      private const string NAME        = "(?<name>[A-Za-z_][A-za-z0-9_]*[!]?)";
-      private const string TYPE        = "(?<type>[A-Za-z_][A-za-z0-9_]*[?]?)";
-      private const string LENGTH      = @"(?<length>\d+)";
+      private const string NAME = "(?<name>[A-Za-z_@][A-za-z0-9_]*)";
+      private const string TYPE = "(?<type>[A-Za-z_][A-za-z0-9_.]*)";
+      private const string LENGTH = @"(?<length>\d+)";
       private const string STRING_TYPE = "(?<type>[Ss]tring)";
-      private const string VISIBILITY  = @"(?<visibility>public\s+|protected\s+)";
-      private const string INITIAL     = @"(=\s*(?<initialValue>.+))";
-      private const string WS          = @"\s*";
-      private const string BODY        = @"(\{.+)";
+      private const string VISIBILITY = @"(?<visibility>public\s+|protected\s+)";
+      private const string INITIAL = @"(=\s*(?<initialValue>.+))";
+      private const string WS = @"\s*";
+      private const string ID = "(?<identity>[!]?)";
+      private const string OPT = "(?<optional>[?]?)";
+      private const string BODY = @"(\{.+)";
 
-      private static readonly Regex Pattern = new Regex($@"^{WS}{VISIBILITY}?{NAME}{WS}{INITIAL}?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{STRING_TYPE}\[{LENGTH}\]\s+{NAME}{WS}{INITIAL}?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{STRING_TYPE}\({LENGTH}\)\s+{NAME}{WS}{INITIAL}?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}:{WS}{STRING_TYPE}\[{LENGTH}\]{WS}{INITIAL}?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}:{WS}{STRING_TYPE}\({LENGTH}\){WS}{INITIAL}?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{TYPE}\s+{NAME}{WS}({INITIAL}?;?|{BODY})?$|" +
-                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}:{WS}{TYPE}{WS}{INITIAL}?$", RegexOptions.Compiled);
+      // valid combinations:
+      //    (public or protected) foo
+      //    (public or protected) foo!
+      //    (public or protected) foo = abc
+      //    (public or protected) foo!
+      //    (public or protected) foo
+      private static readonly Regex Pattern = new Regex($@"^{WS}{VISIBILITY}?{NAME}{WS}{ID}{WS}{INITIAL}?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{STRING_TYPE}{WS}{OPT}{WS}\[{LENGTH}\]\s+{NAME}{WS}{ID}{WS}{INITIAL}?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{STRING_TYPE}{WS}{OPT}{WS}\({LENGTH}\)\s+{NAME}{WS}{ID}{WS}{INITIAL}?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}{ID}{WS}:{WS}{STRING_TYPE}{WS}{OPT}{WS}\[{LENGTH}\]{WS}{INITIAL}?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}{ID}{WS}:{WS}{STRING_TYPE}{WS}{OPT}{WS}\({LENGTH}\){WS}{INITIAL}?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{TYPE}{WS}{OPT}\s+{NAME}{WS}{ID}{WS}({INITIAL}?;?|{BODY})?$|" +
+                                                        $@"^{WS}{VISIBILITY}?{NAME}{WS}{ID}{WS}:{WS}{TYPE}{WS}{OPT}{WS}{INITIAL}?$", RegexOptions.Compiled);
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>
       public override string ToString()
       {
-         List<string> parts = new List<string>
-                              {
-                                 SetterVisibility.ToString().ToLower(),
-                                 $"{Type}{(Required ? "" : "?")}",
-                                 $"{Name}{(IsIdentity ? "!" : "")}"
-                              };
+         List<string> parts = new List<string>();
+         parts.Add(SetterVisibility.ToString().ToLower());
+
+         string type = $"{Type}{(Required ? "" : "?")}";
 
          if (Type?.ToLower() == "string" && MaxLength > 0)
-            parts.Add($"[{MaxLength}]");
-         
+            type += $"[{MaxLength}]";
+
+         parts.Add(type);
+         parts.Add($"{Name}{(IsIdentity ? "!" : "")}");
+
          if (!string.IsNullOrEmpty(InitialValue))
          {
             string initialValue = InitialValue;
-            if (Type?.ToLower() == "string") initialValue = $@"""{InitialValue}""";
+            if (Type?.ToLower() == "string") initialValue = $@"""{InitialValue.Trim('"')}""";
             parts.Add($"= {initialValue}");
          }
 
@@ -303,53 +312,141 @@ namespace Sawczyn.EFDesigner.EFModel
          public int? MaxLength { get; set; }
          public string InitialValue { get; set; }
          public bool IsIdentity { get; set; }
+         public string ErrorMessage { get; set; }
+         public string SourceText { get; set; }
+
+         public ParseResult(string input)
+         {
+            SetterVisibility = SetterAccessModifier.Public;
+            Type = "String";
+            SourceText = input;
+         }
       }
 
       public static ParseResult Parse(ModelRoot modelRoot, string input)
       {
+         ParseResult result = new ParseResult(input);
          Match match = Pattern.Match(input);
+
          if (match.Success)
          {
-            ParseResult result = new ParseResult();
-
-            if (match.Groups["visibility"].Success)
-               result.SetterVisibility = match.Groups["visibility"].Value.Trim() == "protected" ? SetterAccessModifier.Protected : SetterAccessModifier.Public;
-
             if (match.Groups["name"].Success)
-            {
                result.Name = match.Groups["name"].Value.Trim();
-               if (result.Name.EndsWith("!")) result.IsIdentity = true;
-               result.Name = result.Name.Trim('!');
+            else
+            {
+               result.ErrorMessage = "Property name missing";
+               return result;
+
             }
 
-            if (match.Groups["type"].Success)
+            if (match.Groups["visibility"].Success)
             {
-               result.Type = match.Groups["type"].Value.Trim();
-               result.Required = !result.Type.EndsWith("?");
-               result.Type = result.Type.Trim('?');
-               if (!ValidTypes.Contains(result.Type))
+               switch (match.Groups["visibility"].Value.Trim())
                {
-                  result.Type = FromCLRType(result.Type);
-                  if (!ValidTypes.Contains(result.Type) && !modelRoot.Enums.Select(e => e.Name).Contains(result.Type))
-                  {
-                     result.Type = null;
-                     result.Required = null;
-                  }
+                  case "internal":
+                     result.SetterVisibility = SetterAccessModifier.Internal;
+                     break;
+                  case "protected":
+                     result.SetterVisibility = SetterAccessModifier.Protected;
+                     break;
+                  default:
+                     result.SetterVisibility = SetterAccessModifier.Public;
+                     break;
                }
             }
 
-            if (result.Type == "String" && match.Groups["length"].Success && !string.IsNullOrWhiteSpace(match.Groups["length"].Value.Trim()))
+            result.IsIdentity = match.Groups["identity"].Success;
+            result.Required = !match.Groups["optional"].Success;
+
+            if (match.Groups["type"].Success)
+            {
+               result.Type = match.Groups["type"].Value.Trim(';', ' ');
+
+               if (!ValidTypes.Contains(result.Type))
+               {
+                  result.Type = FromCLRType(result.Type);
+
+                  if (!ValidTypes.Contains(result.Type) && !modelRoot.Enums.Select(e => e.Name).Contains(result.Type))
+                  {
+                     result.ErrorMessage = $"Can't use type '{result.Type}'";
+                     return result;
+                  }
+               }
+
+
+               // need the FQN for the type, but we don't use the FQN in the model. So hunt for it.
+               string resultType = GetTypeFQN(modelRoot, result.Type);
+               if (resultType == null)
+               {
+                  result.ErrorMessage = $"Can't use type '{result.Type}'";
+                  return result;
+               }
+
+               result.Type = resultType;
+            }
+
+            if (match.Groups["length"].Success)
+            {
+               if (result.Type != "String")
+               {
+                  result.ErrorMessage = "Max length only valid for strings";
+                  return result;
+               }
+
+               if (!string.IsNullOrWhiteSpace(match.Groups["length"].Value.Trim()))
+               {
+                  result.ErrorMessage = "Looks like you tried to give a max length, but couldn't find an integer value";
+                  return result;
+               }
+
                result.MaxLength = int.Parse(match.Groups["length"].Value.Trim());
+            }
+
 
             if (match.Groups["initialValue"].Success)
-               result.InitialValue = match.Groups["initialValue"].Value.Trim();
+            {
+               try
+               {
+                  result.InitialValue = match.Groups["initialValue"].Value.Trim(' ', ';');
+                  result.InitialValue = Convert.ChangeType(result.InitialValue, System.Type.GetType(result.Type)).ToString();
+               }
+               catch (Exception e)
+               {
+                  result.ErrorMessage = $"Can't use '{result.InitialValue}' as a default for '{result.Type} {result.Name}'";
+                  return result;
+               }
+            }
 
-            return result;
+         }
+         else
+         {
+            result.ErrorMessage = "Can't parse ${input}";
          }
 
-         return null; // couldn't parse
+         return result; 
       }
 
+      internal static string GetTypeFQN(ModelRoot modelRoot, string className)
+      {
+         // find the FQN for the type, but we don't use the FQN in the model. So hunt for it.
+         // namespace could be one of: System, System.Spatial or custom enum's namespace
+         // try it bare first
+         if (System.Type.GetType(className) != null) 
+            return className;
+
+         // bare's no good. Try System.xxx
+         if (System.Type.GetType($"System.{className}") != null) 
+            return "System." + className;
+
+         // nope. Try System.Spatial.xxx
+         if (System.Type.GetType($"System.Spatial.{className}") != null) 
+            return "System.Spatial." + className;
+
+         // still no. Find it as an enum
+         ModelEnum modelEnum = modelRoot.Enums.FirstOrDefault(e => e.Name == className);
+         // if haven't found it, we're done
+         return modelEnum != null ? $"{modelEnum.Namespace}.{modelEnum.Name}" : null;
+      }
       #endregion Parse string
    }
 }

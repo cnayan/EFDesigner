@@ -35,6 +35,8 @@
          this.btnCancel = new System.Windows.Forms.Button();
          this.txtCode = new System.Windows.Forms.TextBox();
          this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+         this.lblErrorMessage = new System.Windows.Forms.ToolStripStatusLabel();
+         this.statusStrip1.SuspendLayout();
          this.SuspendLayout();
          // 
          // label1
@@ -107,11 +109,19 @@
          // 
          // statusStrip1
          // 
+         this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblErrorMessage});
          this.statusStrip1.Location = new System.Drawing.Point(0, 286);
          this.statusStrip1.Name = "statusStrip1";
          this.statusStrip1.Size = new System.Drawing.Size(403, 22);
          this.statusStrip1.TabIndex = 9;
          this.statusStrip1.Text = "statusStrip1";
+         // 
+         // lblErrorMessage
+         // 
+         this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+         this.lblErrorMessage.Name = "lblErrorMessage";
+         this.lblErrorMessage.Size = new System.Drawing.Size(0, 17);
          // 
          // AddCodeForm
          // 
@@ -133,6 +143,8 @@
          this.MinimumSize = new System.Drawing.Size(340, 237);
          this.Name = "AddCodeForm";
          this.Text = "Add properties as code";
+         this.statusStrip1.ResumeLayout(false);
+         this.statusStrip1.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -147,5 +159,6 @@
       private System.Windows.Forms.Button btnCancel;
       private System.Windows.Forms.TextBox txtCode;
       private System.Windows.Forms.StatusStrip statusStrip1;
+      private System.Windows.Forms.ToolStripStatusLabel lblErrorMessage;
    }
 }

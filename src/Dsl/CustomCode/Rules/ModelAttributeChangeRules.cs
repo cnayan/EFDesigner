@@ -164,8 +164,8 @@ namespace Sawczyn.EFDesigner.EFModel.CustomCode.Rules
                {
                   ModelAttribute.ParseResult fragment = ModelAttribute.Parse(element.ModelClass.ModelRoot, s);
 
-                  if (fragment == null)
-                     errorMessage = $"Could not parse entry '{s}'";
+                  if (!string.IsNullOrEmpty(fragment.ErrorMessage))
+                     errorMessage = fragment.ErrorMessage;
                   else
                   {
                      if (string.IsNullOrEmpty(fragment.Name) || !CodeGenerator.IsValidLanguageIndependentIdentifier(fragment.Name))

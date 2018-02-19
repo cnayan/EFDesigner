@@ -877,8 +877,8 @@
     </DomainEnumeration>
     <DomainEnumeration Name="Concurrency" Namespace="Sawczyn.EFDesigner.EFModel" Description="Types of concurrency handling">
       <Literals>
-        <EnumerationLiteral Description="Don't generate code to handle concurrency" Name="None" Value="0" />
-        <EnumerationLiteral Description="Generate timestamp columns to handle optimistic concurrency" Name="Optimistic" Value="1" />
+        <EnumerationLiteral Description="Don't generate code to handle concurrency" Name="None" Value="1" />
+        <EnumerationLiteral Description="Generate timestamp columns to handle optimistic concurrency" Name="Optimistic" Value="2" />
       </Literals>
     </DomainEnumeration>
     <DomainEnumeration Name="ConcurrencyOverride" Namespace="Sawczyn.EFDesigner.EFModel" Description="Description for Sawczyn.EFDesigner.EFModel.ConcurrencyOverride">
