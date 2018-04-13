@@ -14,42 +14,62 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Data.Entity.Spatial;
 
 namespace Testing
 {
-   public partial class BaseClass : BaseClassWithRequiredProperties
+   public partial class UParentCollection
    {
       partial void Init();
 
       /// <summary>
       /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
-      protected BaseClass(): base()
+      protected UParentCollection()
       {
+         UChildCollection = new System.Collections.Generic.HashSet<UChild>();
+
          Init();
       }
 
       /// <summary>
       /// Public constructor with required data
       /// </summary>
-      /// <param name="_property0"></param>
-      public BaseClass(string _property0)
+      /// <param name="_uchildrequired"></param>
+      public UParentCollection(UChild _uchildrequired)
       {
-         if (string.IsNullOrEmpty(_property0)) throw new ArgumentNullException(nameof(_property0));
-         Property0 = _property0;
+         if (_uchildrequired == null) throw new ArgumentNullException(nameof(_uchildrequired));
+         UChildRequired = _uchildrequired;
+
+         UChildCollection = new HashSet<UChild>();
          Init();
       }
 
       /// <summary>
       /// Static create function (for use in LINQ queries, etc.)
       /// </summary>
-      /// <param name="_property0"></param>
-      public static new BaseClass Create(string _property0)
+      /// <param name="_uchildrequired"></param>
+      public static UParentCollection Create(UChild _uchildrequired)
       {
-         return new BaseClass(_property0);
+         return new UParentCollection(_uchildrequired);
       }
 
+      // Persistent properties
+
+      /// <summary>
+      /// Identity, Required, Indexed
+      /// </summary>
+      [Key]
+      [Required]
+      public int Id { get; set; }
+
+      // Persistent navigation properties
+
+      /// <summary>
+      ///  // Required
+      /// </summary>
+      public virtual UChild UChildRequired { get; set; }  // Required
+      public virtual ICollection<UChild> UChildCollection { get; set; } 
+      public virtual UChild UChildOptional { get; set; } 
    }
 }
 

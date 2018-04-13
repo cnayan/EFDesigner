@@ -15,16 +15,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Testing_CoreV2NetCore
+namespace Testing
 {
-   public partial class BaseClass : BaseClassWithRequiredProperties
+   public partial class BaseClassWithRequiredProperties
    {
       partial void Init();
 
       /// <summary>
       /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
-      protected BaseClass(): base()
+      protected BaseClassWithRequiredProperties()
       {
          Init();
       }
@@ -33,7 +33,7 @@ namespace Testing_CoreV2NetCore
       /// Public constructor with required data
       /// </summary>
       /// <param name="_property0"></param>
-      public BaseClass(string _property0)
+      public BaseClassWithRequiredProperties(string _property0)
       {
          if (string.IsNullOrEmpty(_property0)) throw new ArgumentNullException(nameof(_property0));
          Property0 = _property0;
@@ -44,10 +44,25 @@ namespace Testing_CoreV2NetCore
       /// Static create function (for use in LINQ queries, etc.)
       /// </summary>
       /// <param name="_property0"></param>
-      public static new BaseClass Create(string _property0)
+      public static BaseClassWithRequiredProperties Create(string _property0)
       {
-         return new BaseClass(_property0);
+         return new BaseClassWithRequiredProperties(_property0);
       }
+
+      // Persistent properties
+
+      /// <summary>
+      /// Identity, Required, Indexed
+      /// </summary>
+      [Key]
+      [Required]
+      public int Id { get; set; }
+
+      /// <summary>
+      /// Required
+      /// </summary>
+      [Required]
+      public string Property0 { get; set; }
 
    }
 }

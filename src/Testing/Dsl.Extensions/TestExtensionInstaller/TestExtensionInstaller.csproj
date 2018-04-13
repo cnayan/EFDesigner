@@ -14,7 +14,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestExtensionInstaller</RootNamespace>
-    <AssemblyName>TestExtensionInstaller</AssemblyName>
+    <AssemblyName>TestExtension</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
@@ -52,9 +52,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Dsl\Dsl.csproj">
-      <Project>{B77C0323-1B94-4CE4-A416-6316EBCBA81C}</Project>
-      <Name>Dsl</Name>
+    <Reference Include="Sawczyn.EFDesigner.EFModel.Dsl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=65f6575a661235db, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dsl\bin\Debug\Sawczyn.EFDesigner.EFModel.Dsl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestExtension\TestExtension.csproj">
+      <Project>{473CC7FA-4D32-4320-AE9A-CA7D846D7280}</Project>
+      <Name>TestExtension</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>

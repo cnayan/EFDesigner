@@ -148,6 +148,11 @@
     <Compile Include="CustomCode\Utilities\TrackingHelper.cs" />
     <Compile Include="CustomCode\Utilities\EFModelSerializationHelperBase.cs" />
     <Compile Include="CustomCode\Utilities\TypeConverterBase.cs" />
+    <Compile Include="GeneratedCode\DomainModelResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainModelResx.resx</DependentUpon>
+    </Compile>
     <Compile Include="MefExtension\GestureExtensionEnablement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -316,6 +321,7 @@
     <CodeAnalysisDictionary Include="..\CodeAnalysisDictionary.xml">
       <Link>CodeAnalysisDictionary.xml</Link>
     </CodeAnalysisDictionary>
+    <Content Include="Dsl_ml.xml" />
     <Content Include="GeneratedCode\EFModelSchema.xsd">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -375,11 +381,16 @@
     <Service Include="{508349B6-6B84-4df5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GeneratedCode\DomainModelResx.en-US.resx">
+      <DependentUpon>DomainModelResx.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GeneratedCode\DomainModelResx.resx">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainModelResx.tt</DependentUpon>
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DomainModelResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

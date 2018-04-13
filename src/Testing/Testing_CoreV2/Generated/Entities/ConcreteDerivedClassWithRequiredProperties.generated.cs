@@ -15,16 +15,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Testing_CoreV2NetCore
+namespace Testing
 {
-   public partial class BaseClass : BaseClassWithRequiredProperties
+   public partial class ConcreteDerivedClassWithRequiredProperties : AbstractBaseClass
    {
       partial void Init();
 
       /// <summary>
       /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
-      protected BaseClass(): base()
+      protected ConcreteDerivedClassWithRequiredProperties(): base()
       {
          Init();
       }
@@ -32,22 +32,30 @@ namespace Testing_CoreV2NetCore
       /// <summary>
       /// Public constructor with required data
       /// </summary>
-      /// <param name="_property0"></param>
-      public BaseClass(string _property0)
+      /// <param name="_property1"></param>
+      public ConcreteDerivedClassWithRequiredProperties(string _property1)
       {
-         if (string.IsNullOrEmpty(_property0)) throw new ArgumentNullException(nameof(_property0));
-         Property0 = _property0;
+         if (string.IsNullOrEmpty(_property1)) throw new ArgumentNullException(nameof(_property1));
+         Property1 = _property1;
          Init();
       }
 
       /// <summary>
       /// Static create function (for use in LINQ queries, etc.)
       /// </summary>
-      /// <param name="_property0"></param>
-      public static new BaseClass Create(string _property0)
+      /// <param name="_property1"></param>
+      public static ConcreteDerivedClassWithRequiredProperties Create(string _property1)
       {
-         return new BaseClass(_property0);
+         return new ConcreteDerivedClassWithRequiredProperties(_property1);
       }
+
+      // Persistent properties
+
+      /// <summary>
+      /// Required
+      /// </summary>
+      [Required]
+      public string Property1 { get; set; }
 
    }
 }

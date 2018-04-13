@@ -15,7 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Testing_CoreV2NetCore
+namespace Testing
 {
    public partial class BaseClass : BaseClassWithRequiredProperties
    {

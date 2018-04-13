@@ -366,7 +366,7 @@
   <PropertyGroup>
     <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
     <StartAction>Program</StartAction>
-    <StartArguments>/rootsuffix Exp "..\..\..\Debugging\Debugging.sln"</StartArguments>
+    <StartArguments>/rootsuffix Exp "..\..\..\Testing\Testing.sln"</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>IF "$(ConfigurationName)"=="Release" copy /y "$(TargetDir)$(TargetName).vsix" "$(SolutionDir)..\dist\$(TargetName).vsix"

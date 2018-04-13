@@ -8,6 +8,8 @@ using Microsoft.VisualStudio.Modeling.Diagrams.ExtensionEnablement;
 using Microsoft.VisualStudio.Modeling.ExtensionEnablement;
 using Sawczyn.EFDesigner.EFModel.ExtensionEnablement;
 
+// adapted from https://docs.microsoft.com/en-us/visualstudio/modeling/extend-your-dsl-by-using-mef
+
 namespace TestExtension
 {
    [EFModelCommandExtension]
@@ -28,15 +30,14 @@ namespace TestExtension
          // Transaction is required if you want to update elements.  
          //using (Transaction t = SelectionContext.CurrentStore  
          //                                       .TransactionManager.BeginTransaction("fix names"))  
+         //{
+         foreach (ModelElement element in SelectionContext.CurrentSelection.Cast<ShapeElement>().Select(shape => shape.ModelElement))
          {
-            foreach (ShapeElement shape in SelectionContext.CurrentSelection)
-            {
-               ModelElement element = shape.ModelElement;
-               MessageBox.Show(element.GetDomainClass().Name);
-            }
-
-            //t.Commit();  
+            MessageBox.Show(element.GetDomainClass().Name);
          }
+
+         //t.Commit();  
+         //}
       }
 
       /// <summary>
@@ -52,7 +53,6 @@ namespace TestExtension
       }
 
       /// <summary>
-      ///    d
       ///    Called when the user right-clicks the diagram.
       ///    Determines the text of the command in the menu.
       /// </summary>

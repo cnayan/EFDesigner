@@ -15,16 +15,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Testing_CoreV2NetCore
+namespace Testing
 {
-   public partial class BaseClass : BaseClassWithRequiredProperties
+   public abstract partial class AbstractBaseClass : BaseClassWithRequiredProperties
    {
       partial void Init();
 
       /// <summary>
-      /// Default constructor. Protected due to required properties, but present because EF needs it.
+      /// Default constructor. Protected due to being abstract.
       /// </summary>
-      protected BaseClass(): base()
+      protected AbstractBaseClass(): base()
       {
          Init();
       }
@@ -33,20 +33,11 @@ namespace Testing_CoreV2NetCore
       /// Public constructor with required data
       /// </summary>
       /// <param name="_property0"></param>
-      public BaseClass(string _property0)
+      protected AbstractBaseClass(string _property0)
       {
          if (string.IsNullOrEmpty(_property0)) throw new ArgumentNullException(nameof(_property0));
          Property0 = _property0;
          Init();
-      }
-
-      /// <summary>
-      /// Static create function (for use in LINQ queries, etc.)
-      /// </summary>
-      /// <param name="_property0"></param>
-      public static new BaseClass Create(string _property0)
-      {
-         return new BaseClass(_property0);
       }
 
    }

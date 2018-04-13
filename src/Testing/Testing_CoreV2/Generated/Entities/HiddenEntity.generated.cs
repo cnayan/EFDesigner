@@ -15,39 +15,28 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Testing_CoreV2NetCore
+namespace Testing
 {
-   public partial class BaseClass : BaseClassWithRequiredProperties
+   public abstract partial class HiddenEntity
    {
       partial void Init();
 
       /// <summary>
-      /// Default constructor. Protected due to required properties, but present because EF needs it.
+      /// Default constructor. Protected due to being abstract.
       /// </summary>
-      protected BaseClass(): base()
+      protected HiddenEntity()
       {
          Init();
       }
 
-      /// <summary>
-      /// Public constructor with required data
-      /// </summary>
-      /// <param name="_property0"></param>
-      public BaseClass(string _property0)
-      {
-         if (string.IsNullOrEmpty(_property0)) throw new ArgumentNullException(nameof(_property0));
-         Property0 = _property0;
-         Init();
-      }
+      // Persistent properties
 
       /// <summary>
-      /// Static create function (for use in LINQ queries, etc.)
+      /// Identity, Required, Indexed
       /// </summary>
-      /// <param name="_property0"></param>
-      public static new BaseClass Create(string _property0)
-      {
-         return new BaseClass(_property0);
-      }
+      [Key]
+      [Required]
+      public int Id { get; set; }
 
    }
 }

@@ -24,7 +24,7 @@ For comprehensive documentation, please visit [the project's documentation site]
 
 **ChangeLog**
 
-1.0.4.0
+1.1.0
 *    Bug fixes for exceptions thrown when bad input to model attributes as text
 *    Added MinLength string property (used in EF6 only as of this writing)
 *    Modified attribute parser to accept MinLength
@@ -32,7 +32,7 @@ For comprehensive documentation, please visit [the project's documentation site]
 *    Added MEF extension capability !
 *    Added some unit tests
 *    Added some documentation updates
-*    Changed version to 1.0.4.0 due to MEF capability
+*    Changed version to 1.1.0 due to MEF capability
 
 1.0.3.9
 
