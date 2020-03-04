@@ -1,7 +1,7 @@
-﻿<#@ Dsl processor="DslDirectiveProcessor" requires="fileName='..\Dsl\DslDefinition.dsl'" #>
-<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" #>
-<#@ output extension=".vsixmanifest" #>
-<#
+﻿<#@ 
+Dsl processor="DslDirectiveProcessor" requires="fileName='..\Dsl\DslDefinition.dsl'" #><#@ 
+template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" #><#@ 
+output extension=".vsixmanifest" #><#
 /***************************************************************************
    Rather than following the normal DSL practice of including most of the
    template from a common include file, this template is deliberately inlined 
@@ -19,8 +19,7 @@
   string dslProjectName = "Dsl";
 
   string language = "en-US";
-#>
-<?xml version="1.0" encoding="utf-8"?>
+#><?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="<#= this.Dsl.PackageGuid #>" Version="<#= this.Dsl.MajorVersion #>.<#= this.Dsl.MinorVersion #>.<#= this.Dsl.Build #>.<#= this.Dsl.Revision #>" Language="<#= language #>" Publisher="<#= string.IsNullOrEmpty(this.Dsl.CompanyName) ? "Anon" : this.Dsl.CompanyName #>" />
@@ -29,14 +28,12 @@
     <Icon>Logo.ico</Icon>
  </Metadata>
   <Installation InstalledByMsi="false" AllUsers="true">
-    <InstallationTarget Version="[15.0]" Id="Microsoft.VisualStudio.Community" />
+    <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Community" />
   </Installation>
   <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.6,)" />
-    <Dependency Id="Microsoft.VisualStudio.MPF.15.0" DisplayName="Visual Studio MPF 15.0" d:Source="Installed" Version="[15.0,16.0)" />
   </Dependencies>
   <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,)" DisplayName="Visual Studio core editor" />
   </Prerequisites>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />

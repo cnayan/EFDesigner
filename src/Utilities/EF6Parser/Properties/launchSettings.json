@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EF6Parser": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Code\\EFDesigner\\src\\testing\\EF6\\EF6NetStandard\\bin\\Debug\\netstandard2.1\\EF6NetStandard.dll\" c:\\temp\\parsertest.json"
+    }
+  }
+}

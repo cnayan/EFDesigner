@@ -1,7 +1,10 @@
-using System;
-using System.Linq;
 using Microsoft.VisualStudio.Modeling;
 using Microsoft.VisualStudio.Modeling.Diagrams;
+using System;
+using System.Drawing;
+using System.Linq;
+
+using Sawczyn.EFDesigner.EFModel.Extensions;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
@@ -9,8 +12,45 @@ namespace Sawczyn.EFDesigner.EFModel
    ///    Override some methods of the compartment shape.
    ///    *** GenerateDoubleDerived must be set for this shape in DslDefinition.dsl. ****
    /// </summary>
-   public partial class EnumShape
+   public partial class EnumShape : IHighlightFromModelExplorer, IMouseActionTarget
    {
+      /// <summary>
+      /// Exposes NodeShape Collapse() function to DSL's context menu
+      /// </summary>
+      public void CollapseShape() => SetIsExpandedValue(false);
+
+      /// <summary>
+      /// Exposes NodeShape Expand() function to DSL's context menu
+      /// </summary>
+      public void ExpandShape() => SetIsExpandedValue(true);
+
+      protected override CompartmentMapping[] GetCompartmentMappings(Type melType)
+      {
+         CompartmentMapping[] mappings = base.GetCompartmentMappings(melType);
+
+         // Each item in the ValuesCompartment will call GetValueImage to determine its icon. Called any time the element's presentation element invalidates.
+         foreach (ElementListCompartmentMapping mapping in mappings.OfType<ElementListCompartmentMapping>()
+                                                                   .Where(m => m.CompartmentId == "ValuesCompartment"))
+            mapping.ImageGetter = GetValueImage;
+
+         return mappings;
+      }
+
+      private Image GetValueImage(ModelElement element)
+      {
+         ModelRoot modelRoot = element.Store.ModelRoot();
+         if (element is ModelEnumValue enumValue)
+         {
+            return modelRoot.ShowWarningsInDesigner && enumValue.GetHasWarningValue()
+                      ? Resources.Warning
+                      : Resources.EnumValue;
+         }
+
+         return null;
+      }
+
+      #region Drag/drop model attributes
+
       /// <summary>
       ///    Model element that is being dragged.
       /// </summary>
@@ -46,7 +86,7 @@ namespace Sawczyn.EFDesigner.EFModel
       {
          if (dragStartElement != null && dragStartElement != e.HitDiagramItem.RepresentedElements.OfType<ModelEnumValue>().FirstOrDefault())
          {
-            e.DiagramClientView.ActiveMouseAction = new CompartmentDragMouseAction(dragStartElement, this, compartmentBounds);
+            e.DiagramClientView.ActiveMouseAction = new CompartmentDragMouseAction<EnumShape>(dragStartElement, this, compartmentBounds);
             dragStartElement = null;
          }
       }
@@ -56,10 +96,7 @@ namespace Sawczyn.EFDesigner.EFModel
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
-      private void Compartment_MouseUp(object sender, DiagramMouseEventArgs e)
-      {
-         dragStartElement = null;
-      }
+      private void Compartment_MouseUp(object sender, DiagramMouseEventArgs e) => dragStartElement = null;
 
       /// <summary>
       ///    Called by the Action when the user releases the mouse.
@@ -71,7 +108,9 @@ namespace Sawczyn.EFDesigner.EFModel
       public void DoMouseUp(ModelElement dragFrom, DiagramMouseEventArgs e)
       {
          // Original or "from" item:
+#pragma warning disable IDE0019 // Use pattern matching
          ModelEnumValue dragFromElement = dragFrom as ModelEnumValue;
+#pragma warning restore IDE0019 // Use pattern matching
 
          // Current or "to" item:
          ModelEnumValue dragToElement = e.HitDiagramItem.RepresentedElements.OfType<ModelEnumValue>().FirstOrDefault();
@@ -89,15 +128,16 @@ namespace Sawczyn.EFDesigner.EFModel
                DomainRoleInfo parentFromRole = relationshipFrom.DomainRoles[0];
 
                // Get the node in which the element is embedded, usually the element displayed in the shape:
+#pragma warning disable IDE0019 // Use pattern matching
                ModelEnum parentFrom = parentFromLink.LinkedElements[0] as ModelEnum;
+#pragma warning restore IDE0019 // Use pattern matching
 
                // Same again for the target:
                DomainRelationshipInfo relationshipTo = parentToLink.GetDomainRelationship();
                DomainRoleInfo parentToRole = relationshipTo.DomainRoles[0];
-               ModelEnum parentTo = parentToLink.LinkedElements[0] as ModelEnum;
 
                // Mouse went down and up in same parent and same compartment:
-               if (parentFrom != null && parentTo != null && parentTo == parentFrom && relationshipTo == relationshipFrom)
+               if (parentFrom != null && parentToLink.LinkedElements[0] is ModelEnum parentTo && parentTo == parentFrom && relationshipTo == relationshipFrom)
                {
                   // Find index of target position:
                   int newIndex = parentToRole.GetElementLinks(parentTo).IndexOf(parentToLink);
@@ -140,13 +180,10 @@ namespace Sawczyn.EFDesigner.EFModel
       /// </summary>
       /// <param name="child"></param>
       /// <returns></returns>
-      private ElementLink GetEmbeddingLink(ModelEnumValue child)
-      {
-         return child.GetDomainClass()
+      private ElementLink GetEmbeddingLink(ModelEnumValue child) => child.GetDomainClass()
                      .AllEmbeddedByDomainRoles
                      .SelectMany(role => role.OppositeDomainRole.GetElementLinks(child))
                      .FirstOrDefault();
-      }
 
       /// <summary>
       ///    Forget the source item if mouse up occurs outside the compartment.
@@ -156,6 +193,43 @@ namespace Sawczyn.EFDesigner.EFModel
       {
          base.OnMouseUp(e);
          dragStartElement = null;
+      }
+
+      #endregion
+
+      /// <summary>
+      /// Set when DocData is loaded. If non-null, calling this action will open the generated code file, if present
+      /// </summary>
+      public static Func<ModelEnum, bool> OpenCodeFile { get; set; }
+
+      /// <summary>
+      /// If non-null, calling this method will execute code generation for the model
+      /// </summary>
+      public static Action ExecCodeGeneration;
+
+      /// <summary>Called by the control's OnDoubleClick()</summary>
+      /// <param name="e">A DiagramPointEventArgs that contains event data.</param>
+      public override void OnDoubleClick(DiagramPointEventArgs e)
+      {
+         base.OnDoubleClick(e);
+
+         if (OpenCodeFile != null)
+         {
+            ModelEnum modelEnum = (ModelEnum)ModelElement;
+
+            if (OpenCodeFile(modelEnum))
+               return;
+
+            if (ExecCodeGeneration != null && BooleanQuestionDisplay.Show($"Can't open generated file for {modelEnum.Name}. It may not have been generated yet. Do you want to generate the code now?") == true)
+            {
+               ExecCodeGeneration();
+
+               if (OpenCodeFile(modelEnum))
+                  return;
+            }
+
+            ErrorDisplay.Show($"Can't open generated file for {modelEnum.Name}");
+         }
       }
    }
 }

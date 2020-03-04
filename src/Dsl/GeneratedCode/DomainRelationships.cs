@@ -20,6 +20,7 @@ namespace Sawczyn.EFDesigner.EFModel
 	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
 	[global::System.CLSCompliant(true)]
+	[global::System.Diagnostics.DebuggerDisplay("{GetType().Name,nq} (Name = {Name})")]
 	[DslModeling::DomainRelationship(AllowsDuplicates = true)]
 	[DslModeling::DomainObjectId("ce77f831-a92d-4274-823a-3a8441a65f3a")]
 	public abstract partial class Association : DslModeling::ElementLink
@@ -540,6 +541,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		
 		/// <summary>
 		/// Gets or sets the value of TargetMultiplicityDisplay domain property.
+		/// Decorator text
 		/// </summary>
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetMultiplicityDisplay.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetMultiplicityDisplay.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -607,7 +609,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// <summary>
 		/// Storage for SourceDeleteAction
 		/// </summary>
-		private DeleteAction sourceDeleteActionPropertyStorage = DeleteAction.None;
+		private DeleteAction sourceDeleteActionPropertyStorage = DeleteAction.Default;
 		
 		/// <summary>
 		/// Gets or sets the value of SourceDeleteAction domain property.
@@ -616,7 +618,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/SourceDeleteAction.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/SourceDeleteAction.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/SourceDeleteAction.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[global::System.ComponentModel.DefaultValue(DeleteAction.None)]
+		[global::System.ComponentModel.DefaultValue(DeleteAction.Default)]
 		[DslModeling::DomainObjectId("f40a8fc6-0b1b-4c1b-a46c-75d3450cd6c8")]
 		public DeleteAction SourceDeleteAction
 		{
@@ -696,7 +698,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// <summary>
 		/// Storage for TargetDeleteAction
 		/// </summary>
-		private DeleteAction targetDeleteActionPropertyStorage = DeleteAction.None;
+		private DeleteAction targetDeleteActionPropertyStorage = DeleteAction.Default;
 		
 		/// <summary>
 		/// Gets or sets the value of TargetDeleteAction domain property.
@@ -705,7 +707,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetDeleteAction.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetDeleteAction.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetDeleteAction.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[global::System.ComponentModel.DefaultValue(DeleteAction.None)]
+		[global::System.ComponentModel.DefaultValue(DeleteAction.Default)]
 		[DslModeling::DomainObjectId("6e502a47-428b-455f-b155-edf310ce6c73")]
 		public DeleteAction TargetDeleteAction
 		{
@@ -884,6 +886,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Gets or sets the value of TargetDescription domain property.
 		/// Detailed code documentation for this end of the association
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetDescription.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetDescription.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetDescription.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -973,6 +976,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Gets or sets the value of TargetSummary domain property.
 		/// Short code documentation for this end of the association
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetSummary.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetSummary.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetSummary.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -1061,9 +1065,11 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Gets or sets the value of Summary domain property.
 		/// Brief code documentation
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/Summary.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/Summary.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/Summary.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
 		[DslModeling::DomainObjectId("53747127-cd19-43e0-b37b-1b669d506ed2")]
 		public global::System.String Summary
 		{
@@ -1483,6 +1489,677 @@ namespace Sawczyn.EFDesigner.EFModel
 				{
 					ValueChanging(element, oldValue, newValue);
 					element.foreignKeyLocationPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region TargetCustomAttributes domain property code
+		
+		/// <summary>
+		/// TargetCustomAttributes domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TargetCustomAttributesDomainPropertyId = new global::System.Guid(0xa667dd36, 0xac5c, 0x4c98, 0xb3, 0x68, 0xb8, 0x47, 0x78, 0xbd, 0xcd, 0x56);
+		
+		/// <summary>
+		/// Storage for TargetCustomAttributes
+		/// </summary>
+		private global::System.String targetCustomAttributesPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of TargetCustomAttributes domain property.
+		/// Any custom attributes to be generated for the target property. Will be passed
+		/// through as entered.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetCustomAttributes.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetCustomAttributes.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetCustomAttributes.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("a667dd36-ac5c-4c98-b368-b84778bdcd56")]
+		public global::System.String TargetCustomAttributes
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return targetCustomAttributesPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TargetCustomAttributesPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.TargetCustomAttributes domain property.
+		/// </summary>
+		internal sealed partial class TargetCustomAttributesPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private TargetCustomAttributesPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.TargetCustomAttributes domain property value handler.
+			/// </summary>
+			public static readonly TargetCustomAttributesPropertyHandler Instance = new TargetCustomAttributesPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.TargetCustomAttributes domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TargetCustomAttributesDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.targetCustomAttributesPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.targetCustomAttributesPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region TargetDisplayText domain property code
+		
+		/// <summary>
+		/// TargetDisplayText domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TargetDisplayTextDomainPropertyId = new global::System.Guid(0x4f71c60f, 0xe2d6, 0x475c, 0xb5, 0x45, 0x1a, 0xa1, 0x8d, 0x85, 0xd5, 0xab);
+		
+		/// <summary>
+		/// Storage for TargetDisplayText
+		/// </summary>
+		private global::System.String targetDisplayTextPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of TargetDisplayText domain property.
+		/// Text for [Display(Name="<text>")] attribute on this end's property
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetDisplayText.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetDisplayText.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetDisplayText.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("4f71c60f-e2d6-475c-b545-1aa18d85d5ab")]
+		public global::System.String TargetDisplayText
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return targetDisplayTextPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TargetDisplayTextPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.TargetDisplayText domain property.
+		/// </summary>
+		internal sealed partial class TargetDisplayTextPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private TargetDisplayTextPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.TargetDisplayText domain property value handler.
+			/// </summary>
+			public static readonly TargetDisplayTextPropertyHandler Instance = new TargetDisplayTextPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.TargetDisplayText domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TargetDisplayTextDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.targetDisplayTextPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.targetDisplayTextPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region TargetImplementNotify domain property code
+		
+		/// <summary>
+		/// TargetImplementNotify domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TargetImplementNotifyDomainPropertyId = new global::System.Guid(0x637b64d2, 0x193d, 0x47f9, 0xb6, 0x3f, 0xdf, 0x8c, 0xcc, 0x23, 0xf9, 0x00);
+		
+		/// <summary>
+		/// Gets or sets the value of TargetImplementNotify domain property.
+		/// Should this end participate in INotifyPropertyChanged activities? Only valid for
+		/// non-collection targets.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetImplementNotify.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetImplementNotify.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetImplementNotify.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("637b64d2-193d-47f9-b63f-df8ccc23f900")]
+		public global::System.Boolean TargetImplementNotify
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return TargetImplementNotifyPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TargetImplementNotifyPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.TargetImplementNotify domain property.
+		/// </summary>
+		internal sealed partial class TargetImplementNotifyPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.Boolean>
+		{
+			private TargetImplementNotifyPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.TargetImplementNotify domain property value handler.
+			/// </summary>
+			public static readonly TargetImplementNotifyPropertyHandler Instance = new TargetImplementNotifyPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.TargetImplementNotify domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TargetImplementNotifyDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for TargetImplementNotify because its Kind is
+				// set to CustomStorage. Please provide the GetTargetImplementNotifyValue()
+				// method on the domain class.
+				return element.GetTargetImplementNotifyValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for TargetImplementNotify because its Kind is
+					// set to CustomStorage. Please provide the SetTargetImplementNotifyValue()
+					// method on the domain class.
+					element.SetTargetImplementNotifyValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region IsTargetImplementNotifyTracking domain property code
+		
+		/// <summary>
+		/// IsTargetImplementNotifyTracking domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid IsTargetImplementNotifyTrackingDomainPropertyId = new global::System.Guid(0x30a6413f, 0xab71, 0x4297, 0x9d, 0x37, 0xe5, 0x3f, 0x0e, 0xda, 0x88, 0x7f);
+		
+		/// <summary>
+		/// Storage for IsTargetImplementNotifyTracking
+		/// </summary>
+		private global::System.Boolean isTargetImplementNotifyTrackingPropertyStorage = true;
+		
+		/// <summary>
+		/// Gets or sets the value of IsTargetImplementNotifyTracking domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.Association.Is Target Implement
+		/// Notify Tracking
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/IsTargetImplementNotifyTracking.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/IsTargetImplementNotifyTracking.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainObjectId("30a6413f-ab71-4297-9d37-e53f0eda887f")]
+		public global::System.Boolean IsTargetImplementNotifyTracking
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return isTargetImplementNotifyTrackingPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				IsTargetImplementNotifyTrackingPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.IsTargetImplementNotifyTracking domain property.
+		/// </summary>
+		internal sealed partial class IsTargetImplementNotifyTrackingPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.Boolean>
+		{
+			private IsTargetImplementNotifyTrackingPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.IsTargetImplementNotifyTracking domain property value handler.
+			/// </summary>
+			public static readonly IsTargetImplementNotifyTrackingPropertyHandler Instance = new IsTargetImplementNotifyTrackingPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.IsTargetImplementNotifyTracking domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return IsTargetImplementNotifyTrackingDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.isTargetImplementNotifyTrackingPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.isTargetImplementNotifyTrackingPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region FKPropertyName domain property code
+		
+		/// <summary>
+		/// FKPropertyName domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid FKPropertyNameDomainPropertyId = new global::System.Guid(0x1d5c6e0b, 0x4942, 0x4504, 0x97, 0x1d, 0x93, 0x01, 0xbe, 0x5e, 0x07, 0xf1);
+		
+		/// <summary>
+		/// Storage for FKPropertyName
+		/// </summary>
+		private global::System.String fKPropertyNamePropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of FKPropertyName domain property.
+		/// Name of property holding foreign key value for this association
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/FKPropertyName.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/FKPropertyName.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/FKPropertyName.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("1d5c6e0b-4942-4504-971d-9301be5e07f1")]
+		public global::System.String FKPropertyName
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return fKPropertyNamePropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				FKPropertyNamePropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.FKPropertyName domain property.
+		/// </summary>
+		internal sealed partial class FKPropertyNamePropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private FKPropertyNamePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.FKPropertyName domain property value handler.
+			/// </summary>
+			public static readonly FKPropertyNamePropertyHandler Instance = new FKPropertyNamePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.FKPropertyName domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return FKPropertyNameDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.fKPropertyNamePropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.fKPropertyNamePropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region TargetPropertyNameDisplay domain property code
+		
+		/// <summary>
+		/// TargetPropertyNameDisplay domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TargetPropertyNameDisplayDomainPropertyId = new global::System.Guid(0x0b56420b, 0x5f48, 0x4e04, 0x92, 0x88, 0x6d, 0x6a, 0x6f, 0x12, 0xce, 0x9f);
+		
+		/// <summary>
+		/// Gets or sets the value of TargetPropertyNameDisplay domain property.
+		/// Decorator text
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetPropertyNameDisplay.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetPropertyNameDisplay.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetPropertyNameDisplay.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[global::System.ComponentModel.ReadOnly(true)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.Calculated)]
+		[DslModeling::DomainObjectId("0b56420b-5f48-4e04-9288-6d6a6f12ce9f")]
+		public global::System.String TargetPropertyNameDisplay
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return TargetPropertyNameDisplayPropertyHandler.Instance.GetValue(this);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.TargetPropertyNameDisplay domain property.
+		/// </summary>
+		internal sealed partial class TargetPropertyNameDisplayPropertyHandler : DslModeling::CalculatedPropertyValueHandler<Association, global::System.String>
+		{
+			private TargetPropertyNameDisplayPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.TargetPropertyNameDisplay domain property value handler.
+			/// </summary>
+			public static readonly TargetPropertyNameDisplayPropertyHandler Instance = new TargetPropertyNameDisplayPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.TargetPropertyNameDisplay domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TargetPropertyNameDisplayDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for TargetPropertyNameDisplay because its Kind is
+				// set to Calculated. Please provide the GetTargetPropertyNameDisplayValue()
+				// method on the domain class.
+				return element.GetTargetPropertyNameDisplayValue();
+			}
+		
+		}
+		
+		#endregion
+		#region Name domain property code
+		
+		/// <summary>
+		/// Name domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid NameDomainPropertyId = new global::System.Guid(0x21f7d7e2, 0xe0bc, 0x4d59, 0xb7, 0x76, 0x55, 0xa5, 0x67, 0xc1, 0x6c, 0xb0);
+		
+		/// <summary>
+		/// Gets or sets the value of Name domain property.
+		/// Solely for display in the object list of the VStudio property window
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/Name.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/Name.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[global::System.ComponentModel.ReadOnly(true)]
+		[DslModeling::ElementName]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.Calculated)]
+		[DslModeling::DomainObjectId("21f7d7e2-e0bc-4d59-b776-55a567c16cb0")]
+		public global::System.String Name
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return NamePropertyHandler.Instance.GetValue(this);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.Name domain property.
+		/// </summary>
+		internal sealed partial class NamePropertyHandler : DslModeling::CalculatedPropertyValueHandler<Association, global::System.String>
+		{
+			private NamePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.Name domain property value handler.
+			/// </summary>
+			public static readonly NamePropertyHandler Instance = new NamePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.Name domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return NameDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for Name because its Kind is
+				// set to Calculated. Please provide the GetNameValue()
+				// method on the domain class.
+				return element.GetNameValue();
+			}
+		
+		}
+		
+		#endregion
+		#region JoinTableName domain property code
+		
+		/// <summary>
+		/// JoinTableName domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid JoinTableNameDomainPropertyId = new global::System.Guid(0x37a67510, 0x4e09, 0x4d8b, 0xa0, 0xb1, 0xa3, 0x40, 0x1b, 0x2a, 0x5f, 0x15);
+		
+		/// <summary>
+		/// Storage for JoinTableName
+		/// </summary>
+		private global::System.String joinTableNamePropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of JoinTableName domain property.
+		/// Optional name of the database table used to join the two end classes for
+		/// many-to-many associations. If empty, a reasonable default name will be used.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/JoinTableName.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/JoinTableName.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/JoinTableName.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue("")]
+		[DslModeling::DomainObjectId("37a67510-4e09-4d8b-a0b1-a3401b2a5f15")]
+		public global::System.String JoinTableName
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return joinTableNamePropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				JoinTableNamePropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.JoinTableName domain property.
+		/// </summary>
+		internal sealed partial class JoinTableNamePropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private JoinTableNamePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.JoinTableName domain property value handler.
+			/// </summary>
+			public static readonly JoinTableNamePropertyHandler Instance = new JoinTableNamePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.JoinTableName domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return JoinTableNameDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.joinTableNamePropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.joinTableNamePropertyStorage = newValue;
 					ValueChanged(element, oldValue, newValue);
 				}
 			}
@@ -2255,6 +2932,7 @@ namespace Sawczyn.EFDesigner.EFModel
 	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Generalization.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
 	[global::System.CLSCompliant(true)]
+	[global::System.Diagnostics.DebuggerDisplay("{GetType().Name,nq} (Name = {Name})")]
 	[DslModeling::DomainRelationship()]
 	[DslModeling::DomainObjectId("c6eff342-0a73-4d2f-aa0e-b2811663fb60")]
 	public partial class Generalization : DslModeling::ElementLink
@@ -2410,6 +3088,73 @@ namespace Sawczyn.EFDesigner.EFModel
 		{
 			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelClass>, ModelClass>(element, SuperclassDomainRoleId);
 		}
+		#endregion
+		#region Name domain property code
+		
+		/// <summary>
+		/// Name domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid NameDomainPropertyId = new global::System.Guid(0x76e2afe8, 0x4124, 0x448f, 0x83, 0xe1, 0xb6, 0xbe, 0xf1, 0xd1, 0xe9, 0xd7);
+		
+		/// <summary>
+		/// Gets or sets the value of Name domain property.
+		/// Solely for display in the object list of the VStudio property window
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Generalization/Name.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Generalization/Name.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[global::System.ComponentModel.ReadOnly(true)]
+		[DslModeling::ElementName]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.Calculated)]
+		[DslModeling::DomainObjectId("76e2afe8-4124-448f-83e1-b6bef1d1e9d7")]
+		public global::System.String Name
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return NamePropertyHandler.Instance.GetValue(this);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Generalization.Name domain property.
+		/// </summary>
+		internal sealed partial class NamePropertyHandler : DslModeling::CalculatedPropertyValueHandler<Generalization, global::System.String>
+		{
+			private NamePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Generalization.Name domain property value handler.
+			/// </summary>
+			public static readonly NamePropertyHandler Instance = new NamePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Generalization.Name domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return NameDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Generalization element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for Name because its Kind is
+				// set to Calculated. Please provide the GetNameValue()
+				// method on the domain class.
+				return element.GetNameValue();
+			}
+		
+		}
+		
 		#endregion
 		#region Superclass link accessor
 		/// <summary>
@@ -2782,6 +3527,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Gets or sets the value of SourceDescription domain property.
 		/// Detailed code documentation for this end of the association
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDescription.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDescription.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDescription.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -2871,6 +3617,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Gets or sets the value of SourceSummary domain property.
 		/// Short code documentation for this end of the association
 		/// </summary>
+		[System.ComponentModel.Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceSummary.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceSummary.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceSummary.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -2943,6 +3690,432 @@ namespace Sawczyn.EFDesigner.EFModel
 		}
 		
 		#endregion
+		#region SourceCustomAttributes domain property code
+		
+		/// <summary>
+		/// SourceCustomAttributes domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid SourceCustomAttributesDomainPropertyId = new global::System.Guid(0x124bb49e, 0xc952, 0x4a7f, 0x80, 0x1a, 0xa7, 0xaf, 0x0a, 0x98, 0x5f, 0xc4);
+		
+		/// <summary>
+		/// Storage for SourceCustomAttributes
+		/// </summary>
+		private global::System.String sourceCustomAttributesPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of SourceCustomAttributes domain property.
+		/// Any custom attributes to be generated for the source property. Will be passed
+		/// through as entered.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceCustomAttributes.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceCustomAttributes.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceCustomAttributes.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("124bb49e-c952-4a7f-801a-a7af0a985fc4")]
+		public global::System.String SourceCustomAttributes
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return sourceCustomAttributesPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				SourceCustomAttributesPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the BidirectionalAssociation.SourceCustomAttributes domain property.
+		/// </summary>
+		internal sealed partial class SourceCustomAttributesPropertyHandler : DslModeling::DomainPropertyValueHandler<BidirectionalAssociation, global::System.String>
+		{
+			private SourceCustomAttributesPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the BidirectionalAssociation.SourceCustomAttributes domain property value handler.
+			/// </summary>
+			public static readonly SourceCustomAttributesPropertyHandler Instance = new SourceCustomAttributesPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the BidirectionalAssociation.SourceCustomAttributes domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return SourceCustomAttributesDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(BidirectionalAssociation element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.sourceCustomAttributesPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(BidirectionalAssociation element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.sourceCustomAttributesPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region SourceDisplayText domain property code
+		
+		/// <summary>
+		/// SourceDisplayText domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid SourceDisplayTextDomainPropertyId = new global::System.Guid(0x5069324e, 0x4190, 0x403e, 0x87, 0x91, 0x41, 0x6c, 0x69, 0x2c, 0x87, 0x2a);
+		
+		/// <summary>
+		/// Storage for SourceDisplayText
+		/// </summary>
+		private global::System.String sourceDisplayTextPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of SourceDisplayText domain property.
+		/// Text for [Display(Name="<text>")] attribute on this end's property
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDisplayText.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDisplayText.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDisplayText.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("5069324e-4190-403e-8791-416c692c872a")]
+		public global::System.String SourceDisplayText
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return sourceDisplayTextPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				SourceDisplayTextPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the BidirectionalAssociation.SourceDisplayText domain property.
+		/// </summary>
+		internal sealed partial class SourceDisplayTextPropertyHandler : DslModeling::DomainPropertyValueHandler<BidirectionalAssociation, global::System.String>
+		{
+			private SourceDisplayTextPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the BidirectionalAssociation.SourceDisplayText domain property value handler.
+			/// </summary>
+			public static readonly SourceDisplayTextPropertyHandler Instance = new SourceDisplayTextPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the BidirectionalAssociation.SourceDisplayText domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return SourceDisplayTextDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(BidirectionalAssociation element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.sourceDisplayTextPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(BidirectionalAssociation element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.sourceDisplayTextPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region SourceImplementNotify domain property code
+		
+		/// <summary>
+		/// SourceImplementNotify domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid SourceImplementNotifyDomainPropertyId = new global::System.Guid(0x44fda399, 0xd8f1, 0x4d63, 0x80, 0xf1, 0x88, 0x12, 0x77, 0xcb, 0x81, 0x15);
+		
+		/// <summary>
+		/// Gets or sets the value of SourceImplementNotify domain property.
+		/// Should this end participate in INotifyPropertyChanged activities? Only valid for
+		/// non-collection targets.
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceImplementNotify.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceImplementNotify.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceImplementNotify.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("44fda399-d8f1-4d63-80f1-881277cb8115")]
+		public global::System.Boolean SourceImplementNotify
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return SourceImplementNotifyPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				SourceImplementNotifyPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the BidirectionalAssociation.SourceImplementNotify domain property.
+		/// </summary>
+		internal sealed partial class SourceImplementNotifyPropertyHandler : DslModeling::DomainPropertyValueHandler<BidirectionalAssociation, global::System.Boolean>
+		{
+			private SourceImplementNotifyPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the BidirectionalAssociation.SourceImplementNotify domain property value handler.
+			/// </summary>
+			public static readonly SourceImplementNotifyPropertyHandler Instance = new SourceImplementNotifyPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the BidirectionalAssociation.SourceImplementNotify domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return SourceImplementNotifyDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(BidirectionalAssociation element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for SourceImplementNotify because its Kind is
+				// set to CustomStorage. Please provide the GetSourceImplementNotifyValue()
+				// method on the domain class.
+				return element.GetSourceImplementNotifyValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(BidirectionalAssociation element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for SourceImplementNotify because its Kind is
+					// set to CustomStorage. Please provide the SetSourceImplementNotifyValue()
+					// method on the domain class.
+					element.SetSourceImplementNotifyValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region IsSourceImplementNotifyTracking domain property code
+		
+		/// <summary>
+		/// IsSourceImplementNotifyTracking domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid IsSourceImplementNotifyTrackingDomainPropertyId = new global::System.Guid(0x4b2acec5, 0x2746, 0x43a0, 0xb4, 0xbe, 0x17, 0x6e, 0x3c, 0xfa, 0x53, 0x3f);
+		
+		/// <summary>
+		/// Storage for IsSourceImplementNotifyTracking
+		/// </summary>
+		private global::System.Boolean isSourceImplementNotifyTrackingPropertyStorage = true;
+		
+		/// <summary>
+		/// Gets or sets the value of IsSourceImplementNotifyTracking domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.BidirectionalAssociation.Is Source
+		/// Implement Notify Tracking
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/IsSourceImplementNotifyTracking.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/IsSourceImplementNotifyTracking.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainObjectId("4b2acec5-2746-43a0-b4be-176e3cfa533f")]
+		public global::System.Boolean IsSourceImplementNotifyTracking
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return isSourceImplementNotifyTrackingPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				IsSourceImplementNotifyTrackingPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the BidirectionalAssociation.IsSourceImplementNotifyTracking domain property.
+		/// </summary>
+		internal sealed partial class IsSourceImplementNotifyTrackingPropertyHandler : DslModeling::DomainPropertyValueHandler<BidirectionalAssociation, global::System.Boolean>
+		{
+			private IsSourceImplementNotifyTrackingPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the BidirectionalAssociation.IsSourceImplementNotifyTracking domain property value handler.
+			/// </summary>
+			public static readonly IsSourceImplementNotifyTrackingPropertyHandler Instance = new IsSourceImplementNotifyTrackingPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the BidirectionalAssociation.IsSourceImplementNotifyTracking domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return IsSourceImplementNotifyTrackingDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(BidirectionalAssociation element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.isSourceImplementNotifyTrackingPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(BidirectionalAssociation element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.isSourceImplementNotifyTrackingPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region SourcePropertyNameDisplay domain property code
+		
+		/// <summary>
+		/// SourcePropertyNameDisplay domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid SourcePropertyNameDisplayDomainPropertyId = new global::System.Guid(0x0f8bd2a8, 0x4b1c, 0x429d, 0x96, 0xdb, 0xaf, 0xbe, 0x59, 0x25, 0x3d, 0xc6);
+		
+		/// <summary>
+		/// Gets or sets the value of SourcePropertyNameDisplay domain property.
+		/// Decorator text
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourcePropertyNameDisplay.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourcePropertyNameDisplay.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourcePropertyNameDisplay.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[global::System.ComponentModel.ReadOnly(true)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.Calculated)]
+		[DslModeling::DomainObjectId("0f8bd2a8-4b1c-429d-96db-afbe59253dc6")]
+		public global::System.String SourcePropertyNameDisplay
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return SourcePropertyNameDisplayPropertyHandler.Instance.GetValue(this);
+			}
+		}
+		/// <summary>
+		/// Value handler for the BidirectionalAssociation.SourcePropertyNameDisplay domain property.
+		/// </summary>
+		internal sealed partial class SourcePropertyNameDisplayPropertyHandler : DslModeling::CalculatedPropertyValueHandler<BidirectionalAssociation, global::System.String>
+		{
+			private SourcePropertyNameDisplayPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the BidirectionalAssociation.SourcePropertyNameDisplay domain property value handler.
+			/// </summary>
+			public static readonly SourcePropertyNameDisplayPropertyHandler Instance = new SourcePropertyNameDisplayPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the BidirectionalAssociation.SourcePropertyNameDisplay domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return SourcePropertyNameDisplayDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(BidirectionalAssociation element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for SourcePropertyNameDisplay because its Kind is
+				// set to Calculated. Please provide the GetSourcePropertyNameDisplayValue()
+				// method on the domain class.
+				return element.GetSourcePropertyNameDisplayValue();
+			}
+		
+		}
+		
+		#endregion
 		#region BidirectionalSource link accessor
 		/// <summary>
 		/// Get the list of BidirectionalAssociation links to a ModelClass.
@@ -2991,461 +4164,8 @@ namespace Sawczyn.EFDesigner.EFModel
 namespace Sawczyn.EFDesigner.EFModel
 {
 	/// <summary>
-	/// DomainRelationship ModelRootHasTypes
-	/// </summary>
-	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
-	[global::System.CLSCompliant(true)]
-	[DslModeling::DomainRelationship(IsEmbedding=true)]
-	[DslModeling::DomainObjectId("fdfb922e-0f6e-4c3e-9292-038124674b17")]
-	public partial class ModelRootHasTypes : DslModeling::ElementLink
-	{
-		#region Constructors, domain class Id
-		
-		/// <summary>
-		/// ModelRootHasTypes domain class Id.
-		/// </summary>
-		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xfdfb922e, 0x0f6e, 0x4c3e, 0x92, 0x92, 0x03, 0x81, 0x24, 0x67, 0x4b, 0x17);
-	
-				
-		/// <summary>
-		/// Constructor
-		/// Creates a ModelRootHasTypes link in the same Partition as the given ModelRoot
-		/// </summary>
-		/// <param name="source">ModelRoot to use as the source of the relationship.</param>
-		/// <param name="target">ModelType to use as the target of the relationship.</param>
-		public ModelRootHasTypes(ModelRoot source, ModelType target)
-			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(ModelRootHasTypes.ModelRootDomainRoleId, source), new DslModeling::RoleAssignment(ModelRootHasTypes.TypeDomainRoleId, target)}, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="store">Store where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		public ModelRootHasTypes(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
-			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="store">Store where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
-		public ModelRootHasTypes(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
-			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="partition">Partition where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		public ModelRootHasTypes(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
-			: base(partition, roleAssignments, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="partition">Partition where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
-		public ModelRootHasTypes(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
-			: base(partition, roleAssignments, propertyAssignments)
-		{
-		}
-		#endregion
-		#region ModelRoot domain role code
-		
-		/// <summary>
-		/// ModelRoot domain role Id.
-		/// </summary>
-		public static readonly global::System.Guid ModelRootDomainRoleId = new global::System.Guid(0x74f84fb7, 0x10fe, 0x4609, 0xa1, 0xb3, 0x02, 0xd2, 0x25, 0x74, 0x97, 0x70);
-		
-		/// <summary>
-		/// DomainRole ModelRoot
-		/// </summary>
-		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes/ModelRoot.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes/ModelRoot.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Types", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasTypes/ModelRoot.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.PropagatesCopyToLinkAndOppositeRolePlayer, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
-		[DslModeling::DomainObjectId("74f84fb7-10fe-4609-a1b3-02d225749770")]
-		public virtual ModelRoot ModelRoot
-		{
-			[global::System.Diagnostics.DebuggerStepThrough]
-			get
-			{
-				return (ModelRoot)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelRootDomainRoleId);
-			}
-			[global::System.Diagnostics.DebuggerStepThrough]
-			set
-			{
-				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelRootDomainRoleId, value);
-			}
-		}
-				
-		#endregion
-		#region Static methods to access ModelRoot of a ModelType
-		/// <summary>
-		/// Gets ModelRoot.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static ModelRoot GetModelRoot(ModelType element)
-		{
-			return DslModeling::DomainRoleInfo.GetLinkedElement(element, TypeDomainRoleId) as ModelRoot;
-		}
-		
-		/// <summary>
-		/// Sets ModelRoot.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static void SetModelRoot(ModelType element, ModelRoot newModelRoot)
-		{
-			DslModeling::DomainRoleInfo.SetLinkedElement(element, TypeDomainRoleId, newModelRoot);
-		}
-		#endregion
-		#region Type domain role code
-		
-		/// <summary>
-		/// Type domain role Id.
-		/// </summary>
-		public static readonly global::System.Guid TypeDomainRoleId = new global::System.Guid(0x0c989c89, 0x6f71, 0x4cbc, 0x98, 0xda, 0xf1, 0xf1, 0x30, 0xd6, 0xe1, 0x57);
-		
-		/// <summary>
-		/// DomainRole Type
-		/// </summary>
-		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes/Type.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasTypes/Type.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "ModelRoot", PropagatesDelete = true,  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroOne)]
-		[DslModeling::DomainObjectId("0c989c89-6f71-4cbc-98da-f1f130d6e157")]
-		public virtual ModelType Type
-		{
-			[global::System.Diagnostics.DebuggerStepThrough]
-			get
-			{
-				return (ModelType)DslModeling::DomainRoleInfo.GetRolePlayer(this, TypeDomainRoleId);
-			}
-			[global::System.Diagnostics.DebuggerStepThrough]
-			set
-			{
-				DslModeling::DomainRoleInfo.SetRolePlayer(this, TypeDomainRoleId, value);
-			}
-		}
-				
-		#endregion
-		#region Static methods to access Types of a ModelRoot
-		/// <summary>
-		/// Gets a list of Types.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static DslModeling::LinkedElementCollection<ModelType> GetTypes(ModelRoot element)
-		{
-			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelType>, ModelType>(element, ModelRootDomainRoleId);
-		}
-		#endregion
-		#region ModelRoot link accessor
-		/// <summary>
-		/// Get the list of ModelRootHasTypes links to a ModelRoot.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> GetLinksToTypes ( global::Sawczyn.EFDesigner.EFModel.ModelRoot modelRootInstance )
-		{
-			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes>(modelRootInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.ModelRootDomainRoleId);
-		}
-		#endregion
-		#region Type link accessor
-		/// <summary>
-		/// Get the ModelRootHasTypes link to a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes GetLinkToModelRoot (global::Sawczyn.EFDesigner.EFModel.ModelType typeInstance)
-		{
-			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes>(typeInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.TypeDomainRoleId);
-			global::System.Diagnostics.Debug.Assert(links.Count <= 1, "Multiplicity of Type not obeyed.");
-			if ( links.Count == 0 )
-			{
-				return null;
-			}
-			else
-			{
-				return links[0];
-			}
-		}
-		#endregion
-		#region ModelRootHasTypes instance accessors
-		
-		/// <summary>
-		/// Get any ModelRootHasTypes links between a given ModelRoot and a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> GetLinks( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelType target )
-		{
-			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes>();
-			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.ModelRootDomainRoleId);
-			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes link in links )
-			{
-				if ( target.Equals(link.Type) )
-				{
-					outLinks.Add(link);
-				}
-			}
-			return outLinks.AsReadOnly();
-		}
-		/// <summary>
-		/// Get the one ModelRootHasTypes link between a given ModelRootand a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes GetLink( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelType target )
-		{
-			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes.ModelRootDomainRoleId);
-			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasTypes link in links )
-			{
-				if ( target.Equals(link.Type) )
-				{
-					return link;
-				}
-			}
-			return null;
-		}
-		
-		#endregion
-	}
-}
-namespace Sawczyn.EFDesigner.EFModel
-{
-	/// <summary>
-	/// DomainRelationship CommentReferencesSubjects
-	/// </summary>
-	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
-	[global::System.CLSCompliant(true)]
-	[DslModeling::DomainRelationship()]
-	[DslModeling::DomainObjectId("da518d23-afeb-4ef1-9c86-b66b3b0a4b64")]
-	public partial class CommentReferencesSubjects : DslModeling::ElementLink
-	{
-		#region Constructors, domain class Id
-		
-		/// <summary>
-		/// CommentReferencesSubjects domain class Id.
-		/// </summary>
-		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xda518d23, 0xafeb, 0x4ef1, 0x9c, 0x86, 0xb6, 0x6b, 0x3b, 0x0a, 0x4b, 0x64);
-	
-				
-		/// <summary>
-		/// Constructor
-		/// Creates a CommentReferencesSubjects link in the same Partition as the given Comment
-		/// </summary>
-		/// <param name="source">Comment to use as the source of the relationship.</param>
-		/// <param name="target">ModelType to use as the target of the relationship.</param>
-		public CommentReferencesSubjects(Comment source, ModelType target)
-			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(CommentReferencesSubjects.CommentDomainRoleId, source), new DslModeling::RoleAssignment(CommentReferencesSubjects.SubjectDomainRoleId, target)}, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="store">Store where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		public CommentReferencesSubjects(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
-			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="store">Store where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
-		public CommentReferencesSubjects(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
-			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="partition">Partition where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		public CommentReferencesSubjects(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
-			: base(partition, roleAssignments, null)
-		{
-		}
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="partition">Partition where new link is to be created.</param>
-		/// <param name="roleAssignments">List of relationship role assignments.</param>
-		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
-		public CommentReferencesSubjects(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
-			: base(partition, roleAssignments, propertyAssignments)
-		{
-		}
-		#endregion
-		#region Comment domain role code
-		
-		/// <summary>
-		/// Comment domain role Id.
-		/// </summary>
-		public static readonly global::System.Guid CommentDomainRoleId = new global::System.Guid(0xce79e1f6, 0x3075, 0x4385, 0x82, 0x82, 0xc1, 0x82, 0x76, 0xe1, 0xde, 0x48);
-		
-		/// <summary>
-		/// DomainRole Comment
-		/// </summary>
-		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Subjects", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
-		[DslModeling::DomainObjectId("ce79e1f6-3075-4385-8282-c18276e1de48")]
-		public virtual Comment Comment
-		{
-			[global::System.Diagnostics.DebuggerStepThrough]
-			get
-			{
-				return (Comment)DslModeling::DomainRoleInfo.GetRolePlayer(this, CommentDomainRoleId);
-			}
-			[global::System.Diagnostics.DebuggerStepThrough]
-			set
-			{
-				DslModeling::DomainRoleInfo.SetRolePlayer(this, CommentDomainRoleId, value);
-			}
-		}
-				
-		#endregion
-		#region Static methods to access Comments of a ModelType
-		/// <summary>
-		/// Gets a list of Comments.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static DslModeling::LinkedElementCollection<Comment> GetComments(ModelType element)
-		{
-			return GetRoleCollection<DslModeling::LinkedElementCollection<Comment>, Comment>(element, SubjectDomainRoleId);
-		}
-		#endregion
-		#region Subject domain role code
-		
-		/// <summary>
-		/// Subject domain role Id.
-		/// </summary>
-		public static readonly global::System.Guid SubjectDomainRoleId = new global::System.Guid(0x3c3c02b2, 0x5629, 0x43a8, 0x80, 0xc8, 0x67, 0xd1, 0x98, 0x0c, 0x75, 0xe6);
-		
-		/// <summary>
-		/// DomainRole Subject
-		/// </summary>
-		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Subject.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Subject.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
-		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "Comments", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Subject.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
-		[DslModeling::DomainObjectId("3c3c02b2-5629-43a8-80c8-67d1980c75e6")]
-		public virtual ModelType Subject
-		{
-			[global::System.Diagnostics.DebuggerStepThrough]
-			get
-			{
-				return (ModelType)DslModeling::DomainRoleInfo.GetRolePlayer(this, SubjectDomainRoleId);
-			}
-			[global::System.Diagnostics.DebuggerStepThrough]
-			set
-			{
-				DslModeling::DomainRoleInfo.SetRolePlayer(this, SubjectDomainRoleId, value);
-			}
-		}
-				
-		#endregion
-		#region Static methods to access Subjects of a Comment
-		/// <summary>
-		/// Gets a list of Subjects.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static DslModeling::LinkedElementCollection<ModelType> GetSubjects(Comment element)
-		{
-			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelType>, ModelType>(element, CommentDomainRoleId);
-		}
-		#endregion
-		#region Comment link accessor
-		/// <summary>
-		/// Get the list of CommentReferencesSubjects links to a Comment.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinksToSubjects ( global::Sawczyn.EFDesigner.EFModel.Comment commentInstance )
-		{
-			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(commentInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
-		}
-		#endregion
-		#region Subject link accessor
-		/// <summary>
-		/// Get the list of CommentReferencesSubjects links to a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinksToComments ( global::Sawczyn.EFDesigner.EFModel.ModelType subjectInstance )
-		{
-			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(subjectInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.SubjectDomainRoleId);
-		}
-		#endregion
-		#region CommentReferencesSubjects instance accessors
-		
-		/// <summary>
-		/// Get any CommentReferencesSubjects links between a given Comment and a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinks( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelType target )
-		{
-			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>();
-			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
-			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects link in links )
-			{
-				if ( target.Equals(link.Subject) )
-				{
-					outLinks.Add(link);
-				}
-			}
-			return outLinks.AsReadOnly();
-		}
-		/// <summary>
-		/// Get the one CommentReferencesSubjects link between a given Commentand a ModelType.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerStepThrough]
-		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-		public static global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects GetLink( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelType target )
-		{
-			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
-			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects link in links )
-			{
-				if ( target.Equals(link.Subject) )
-				{
-					return link;
-				}
-			}
-			return null;
-		}
-		
-		#endregion
-	}
-}
-namespace Sawczyn.EFDesigner.EFModel
-{
-	/// <summary>
 	/// DomainRelationship ModelRootHasEnums
-	/// No description available
+	/// Relationship rooting ModelEnum domain entities to the tree
 	/// </summary>
 	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasEnums.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasEnums.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -3684,7 +4404,7 @@ namespace Sawczyn.EFDesigner.EFModel
 {
 	/// <summary>
 	/// DomainRelationship ModelEnumHasValues
-	/// No description available
+	/// Relationship linking enumeration values to an enumeration
 	/// </summary>
 	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelEnumHasValues.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelEnumHasValues.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
@@ -3919,3 +4639,1131 @@ namespace Sawczyn.EFDesigner.EFModel
 		#endregion
 	}
 }
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship ModelRootHasClasses
+	/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasClasses
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship(IsEmbedding=true)]
+	[DslModeling::DomainObjectId("08ff1339-a992-4ffe-b350-6ba2eab5d7a4")]
+	public partial class ModelRootHasClasses : DslModeling::ElementLink
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// ModelRootHasClasses domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0x08ff1339, 0xa992, 0x4ffe, 0xb3, 0x50, 0x6b, 0xa2, 0xea, 0xb5, 0xd7, 0xa4);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a ModelRootHasClasses link in the same Partition as the given ModelRoot
+		/// </summary>
+		/// <param name="source">ModelRoot to use as the source of the relationship.</param>
+		/// <param name="target">ModelClass to use as the target of the relationship.</param>
+		public ModelRootHasClasses(ModelRoot source, ModelClass target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(ModelRootHasClasses.ModelRootDomainRoleId, source), new DslModeling::RoleAssignment(ModelRootHasClasses.ModelClassDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasClasses(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasClasses(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasClasses(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasClasses(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region ModelRoot domain role code
+		
+		/// <summary>
+		/// ModelRoot domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelRootDomainRoleId = new global::System.Guid(0x435f6b0f, 0xd7e3, 0x43c3, 0x8b, 0x08, 0x0f, 0x2a, 0x95, 0xdd, 0xd7, 0x55);
+		
+		/// <summary>
+		/// DomainRole ModelRoot
+		/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelRoot
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelRoot.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelRoot.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Classes", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelRoot.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.PropagatesCopyToLinkAndOppositeRolePlayer, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("435f6b0f-d7e3-43c3-8b08-0f2a95ddd755")]
+		public virtual ModelRoot ModelRoot
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelRoot)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelRootDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelRootDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access ModelRoot of a ModelClass
+		/// <summary>
+		/// Gets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static ModelRoot GetModelRoot(ModelClass element)
+		{
+			return DslModeling::DomainRoleInfo.GetLinkedElement(element, ModelClassDomainRoleId) as ModelRoot;
+		}
+		
+		/// <summary>
+		/// Sets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static void SetModelRoot(ModelClass element, ModelRoot newModelRoot)
+		{
+			DslModeling::DomainRoleInfo.SetLinkedElement(element, ModelClassDomainRoleId, newModelRoot);
+		}
+		#endregion
+		#region ModelClass domain role code
+		
+		/// <summary>
+		/// ModelClass domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelClassDomainRoleId = new global::System.Guid(0x82403bdb, 0x397b, 0x48d8, 0x98, 0x9d, 0xa7, 0x48, 0x27, 0xdc, 0xb2, 0x72);
+		
+		/// <summary>
+		/// DomainRole ModelClass
+		/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelClass
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelClass.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelClass.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "ModelRoot", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasClasses/ModelClass.PropertyDisplayName", PropagatesDelete = true,  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.One)]
+		[DslModeling::DomainObjectId("82403bdb-397b-48d8-989d-a74827dcb272")]
+		public virtual ModelClass ModelClass
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelClass)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelClassDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelClassDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Classes of a ModelRoot
+		/// <summary>
+		/// Gets a list of Classes.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelClass> GetClasses(ModelRoot element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelClass>, ModelClass>(element, ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelRoot link accessor
+		/// <summary>
+		/// Get the list of ModelRootHasClasses links to a ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> GetLinksToClasses ( global::Sawczyn.EFDesigner.EFModel.ModelRoot modelRootInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses>(modelRootInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelClass link accessor
+		/// <summary>
+		/// Get the ModelRootHasClasses link to a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses GetLinkToModelRoot (global::Sawczyn.EFDesigner.EFModel.ModelClass modelClassInstance)
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses>(modelClassInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelClassDomainRoleId);
+			global::System.Diagnostics.Debug.Assert(links.Count <= 1, "Multiplicity of ModelClass not obeyed.");
+			if ( links.Count == 0 )
+			{
+				return null;
+			}
+			else
+			{
+				return links[0];
+			}
+		}
+		#endregion
+		#region ModelRootHasClasses instance accessors
+		
+		/// <summary>
+		/// Get any ModelRootHasClasses links between a given ModelRoot and a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> GetLinks( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelClass target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses link in links )
+			{
+				if ( target.Equals(link.ModelClass) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one ModelRootHasClasses link between a given ModelRootand a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses GetLink( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelClass target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses link in links )
+			{
+				if ( target.Equals(link.ModelClass) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship CommentReferencesSubjects
+	/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship()]
+	[DslModeling::DomainObjectId("c1a798b4-85dc-4479-9c35-30f5b15d8aa1")]
+	public abstract partial class CommentReferencesSubjects : DslModeling::ElementLink
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// CommentReferencesSubjects domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xc1a798b4, 0x85dc, 0x4479, 0x9c, 0x35, 0x30, 0xf5, 0xb1, 0x5d, 0x8a, 0xa1);
+	
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="partition">The Partition instance containing this ElementLink</param>
+		/// <param name="roleAssignments">A set of role assignments for roleplayer initialization</param>
+		/// <param name="propertyAssignments">A set of attribute assignments for attribute initialization</param>
+		protected CommentReferencesSubjects(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region Comment domain role code
+		
+		/// <summary>
+		/// Comment domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid CommentDomainRoleId = new global::System.Guid(0x8624f267, 0x1304, 0x43ef, 0xac, 0xc4, 0xf0, 0xb7, 0xd6, 0x7b, 0x28, 0x56);
+		
+		/// <summary>
+		/// DomainRole Comment
+		/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.Comment
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Subjects", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/Comment.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("8624f267-1304-43ef-acc4-f0b7d67b2856")]
+		public abstract Comment Comment
+		{
+			get;
+			set;
+		}
+				
+		#endregion
+		#region Static methods to access Comments of a DesignElement
+		/// <summary>
+		/// Gets a list of Comments.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::ReadOnlyLinkedElementCollection<Comment> GetComments(DesignElement element)
+		{
+			return GetRoleCollection<DslModeling::ReadOnlyLinkedElementCollection<Comment>, Comment>(element, DesignElementDomainRoleId);
+		}
+		#endregion
+		#region DesignElement domain role code
+		
+		/// <summary>
+		/// DesignElement domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid DesignElementDomainRoleId = new global::System.Guid(0xf2d70cc8, 0x21b0, 0x455b, 0x98, 0x41, 0xbe, 0xe1, 0x7b, 0x5a, 0xd5, 0xd9);
+		
+		/// <summary>
+		/// DomainRole DesignElement
+		/// Description for
+		/// Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DesignElement
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/DesignElement.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/DesignElement.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "Comments", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects/DesignElement.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("f2d70cc8-21b0-455b-9841-bee17b5ad5d9")]
+		public abstract DesignElement DesignElement
+		{
+			get;
+			set;
+		}
+				
+		#endregion
+		#region Static methods to access Subjects of a Comment
+		/// <summary>
+		/// Gets a list of Subjects.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::ReadOnlyLinkedElementCollection<DesignElement> GetSubjects(Comment element)
+		{
+			return GetRoleCollection<DslModeling::ReadOnlyLinkedElementCollection<DesignElement>, DesignElement>(element, CommentDomainRoleId);
+		}
+		#endregion
+		#region Comment link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesSubjects links to a Comment.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinksToSubjects ( global::Sawczyn.EFDesigner.EFModel.Comment commentInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(commentInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
+		}
+		#endregion
+		#region DesignElement link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesSubjects links to a DesignElement.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinksToComments ( global::Sawczyn.EFDesigner.EFModel.DesignElement designElementInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(designElementInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DesignElementDomainRoleId);
+		}
+		#endregion
+		#region CommentReferencesSubjects instance accessors
+		
+		/// <summary>
+		/// Get any CommentReferencesSubjects links between a given Comment and a DesignElement.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> GetLinks( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.DesignElement target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects link in links )
+			{
+				if ( target.Equals(link.DesignElement) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one CommentReferencesSubjects link between a given Commentand a DesignElement.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects GetLink( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.DesignElement target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects link in links )
+			{
+				if ( target.Equals(link.DesignElement) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship CommentReferencesClasses
+	/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesClasses
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship()]
+	[DslModeling::DomainObjectId("cedffe97-5a26-4774-89bf-ea0bda108db2")]
+	public partial class CommentReferencesClasses : CommentReferencesSubjects
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// CommentReferencesClasses domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xcedffe97, 0x5a26, 0x4774, 0x89, 0xbf, 0xea, 0x0b, 0xda, 0x10, 0x8d, 0xb2);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a CommentReferencesClasses link in the same Partition as the given Comment
+		/// </summary>
+		/// <param name="source">Comment to use as the source of the relationship.</param>
+		/// <param name="target">ModelClass to use as the target of the relationship.</param>
+		public CommentReferencesClasses(Comment source, ModelClass target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(CommentReferencesClasses.CommentDomainRoleId, source), new DslModeling::RoleAssignment(CommentReferencesClasses.ModelClassDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public CommentReferencesClasses(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public CommentReferencesClasses(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public CommentReferencesClasses(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public CommentReferencesClasses(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region Comment domain role code
+		
+		/// <summary>
+		/// Comment domain role Id.
+		/// </summary>
+		public static readonly new global::System.Guid CommentDomainRoleId = new global::System.Guid(0xebcf4701, 0xc44e, 0x4ec9, 0x8a, 0x34, 0x0f, 0x84, 0x28, 0xca, 0xc3, 0x52);
+		
+		/// <summary>
+		/// DomainRole Comment
+		/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.Comment
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/Comment.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/Comment.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Classes", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/Comment.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("ebcf4701-c44e-4ec9-8a34-0f8428cac352")]
+		public override Comment Comment
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (Comment)DslModeling::DomainRoleInfo.GetRolePlayer(this, CommentDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, CommentDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Comments of a ModelClass
+		/// <summary>
+		/// Gets a list of Comments.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<Comment> GetComments(ModelClass element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<Comment>, Comment>(element, ModelClassDomainRoleId);
+		}
+		#endregion
+		#region ModelClass domain role code
+		
+		/// <summary>
+		/// ModelClass domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelClassDomainRoleId = new global::System.Guid(0x2495fc6d, 0x7420, 0x46b0, 0x85, 0x65, 0x21, 0xe3, 0x81, 0x82, 0x8d, 0x40);
+		
+		/// <summary>
+		/// DomainRole ModelClass
+		/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.ModelClass
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/ModelClass.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/ModelClass.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "Comments", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesClasses/ModelClass.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("2495fc6d-7420-46b0-8565-21e381828d40")]
+		public virtual ModelClass ModelClass
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelClass)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelClassDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelClassDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Classes of a Comment
+		/// <summary>
+		/// Gets a list of Classes.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelClass> GetClasses(Comment element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelClass>, ModelClass>(element, CommentDomainRoleId);
+		}
+		#endregion
+		#region DesignElement domain role override
+		
+		/// <summary>
+		/// Gets the element playing ModelClass domain role.
+		/// Description for
+		/// Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DesignElement
+		/// </summary>
+		public override DesignElement DesignElement
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return this.ModelClass;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				this.ModelClass = (ModelClass)value;
+			}
+		}
+		
+		#endregion
+		#region Comment link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesClasses links to a Comment.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> GetLinksToClasses ( global::Sawczyn.EFDesigner.EFModel.Comment commentInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses>(commentInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.CommentDomainRoleId);
+		}
+		#endregion
+		#region ModelClass link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesClasses links to a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> GetLinksToComments ( global::Sawczyn.EFDesigner.EFModel.ModelClass modelClassInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses>(modelClassInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.ModelClassDomainRoleId);
+		}
+		#endregion
+		#region CommentReferencesClasses instance accessors
+		
+		/// <summary>
+		/// Get any CommentReferencesClasses links between a given Comment and a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> GetLinks( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelClass target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses link in links )
+			{
+				if ( target.Equals(link.ModelClass) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one CommentReferencesClasses link between a given Commentand a ModelClass.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses GetLink( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelClass target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesClasses link in links )
+			{
+				if ( target.Equals(link.ModelClass) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship CommentReferencesEnums
+	/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesEnums
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship()]
+	[DslModeling::DomainObjectId("c2ca35b4-7dc5-4a7d-9a6f-cfd1cc9aedac")]
+	public partial class CommentReferencesEnums : CommentReferencesSubjects
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// CommentReferencesEnums domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xc2ca35b4, 0x7dc5, 0x4a7d, 0x9a, 0x6f, 0xcf, 0xd1, 0xcc, 0x9a, 0xed, 0xac);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a CommentReferencesEnums link in the same Partition as the given Comment
+		/// </summary>
+		/// <param name="source">Comment to use as the source of the relationship.</param>
+		/// <param name="target">ModelEnum to use as the target of the relationship.</param>
+		public CommentReferencesEnums(Comment source, ModelEnum target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(CommentReferencesEnums.CommentDomainRoleId, source), new DslModeling::RoleAssignment(CommentReferencesEnums.ModelEnumDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public CommentReferencesEnums(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public CommentReferencesEnums(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public CommentReferencesEnums(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public CommentReferencesEnums(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region Comment domain role code
+		
+		/// <summary>
+		/// Comment domain role Id.
+		/// </summary>
+		public static readonly new global::System.Guid CommentDomainRoleId = new global::System.Guid(0xed267b9d, 0xcbe7, 0x4888, 0x9a, 0x95, 0xe7, 0x51, 0x91, 0x35, 0xc7, 0x6b);
+		
+		/// <summary>
+		/// DomainRole Comment
+		/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.Comment
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/Comment.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/Comment.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Enums", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/Comment.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("ed267b9d-cbe7-4888-9a95-e7519135c76b")]
+		public override Comment Comment
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (Comment)DslModeling::DomainRoleInfo.GetRolePlayer(this, CommentDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, CommentDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Comments of a ModelEnum
+		/// <summary>
+		/// Gets a list of Comments.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<Comment> GetComments(ModelEnum element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<Comment>, Comment>(element, ModelEnumDomainRoleId);
+		}
+		#endregion
+		#region ModelEnum domain role code
+		
+		/// <summary>
+		/// ModelEnum domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelEnumDomainRoleId = new global::System.Guid(0xd5ba04cb, 0xa560, 0x4293, 0xbd, 0xee, 0xb4, 0x5b, 0x62, 0x74, 0x28, 0x64);
+		
+		/// <summary>
+		/// DomainRole ModelEnum
+		/// Description for Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.ModelEnum
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/ModelEnum.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/ModelEnum.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "Comments", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/ModelEnum.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("d5ba04cb-a560-4293-bdee-b45b62742864")]
+		public virtual ModelEnum ModelEnum
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelEnum)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelEnumDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelEnumDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Enums of a Comment
+		/// <summary>
+		/// Gets a list of Enums.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelEnum> GetEnums(Comment element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelEnum>, ModelEnum>(element, CommentDomainRoleId);
+		}
+		#endregion
+		#region DesignElement domain role override
+		
+		/// <summary>
+		/// Gets the element playing ModelEnum domain role.
+		/// Description for
+		/// Sawczyn.EFDesigner.EFModel.CommentReferencesSubjects.DesignElement
+		/// </summary>
+		public override DesignElement DesignElement
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return this.ModelEnum;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				this.ModelEnum = (ModelEnum)value;
+			}
+		}
+		
+		#endregion
+		#region Comment link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesEnums links to a Comment.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> GetLinksToEnums ( global::Sawczyn.EFDesigner.EFModel.Comment commentInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums>(commentInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.CommentDomainRoleId);
+		}
+		#endregion
+		#region ModelEnum link accessor
+		/// <summary>
+		/// Get the list of CommentReferencesEnums links to a ModelEnum.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> GetLinksToComments ( global::Sawczyn.EFDesigner.EFModel.ModelEnum modelEnumInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums>(modelEnumInstance, global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.ModelEnumDomainRoleId);
+		}
+		#endregion
+		#region CommentReferencesEnums instance accessors
+		
+		/// <summary>
+		/// Get any CommentReferencesEnums links between a given Comment and a ModelEnum.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> GetLinks( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelEnum target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums link in links )
+			{
+				if ( target.Equals(link.ModelEnum) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one CommentReferencesEnums link between a given Commentand a ModelEnum.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums GetLink( global::Sawczyn.EFDesigner.EFModel.Comment source, global::Sawczyn.EFDesigner.EFModel.ModelEnum target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums>(source, global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums.CommentDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums link in links )
+			{
+				if ( target.Equals(link.ModelEnum) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship ModelRootHasModelDiagrams
+	/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship(IsEmbedding=true)]
+	[DslModeling::DomainObjectId("bbdf2307-a6c2-4cf5-b2d9-290b94558d42")]
+	public partial class ModelRootHasModelDiagrams : DslModeling::ElementLink
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// ModelRootHasModelDiagrams domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0xbbdf2307, 0xa6c2, 0x4cf5, 0xb2, 0xd9, 0x29, 0x0b, 0x94, 0x55, 0x8d, 0x42);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a ModelRootHasModelDiagrams link in the same Partition as the given ModelRoot
+		/// </summary>
+		/// <param name="source">ModelRoot to use as the source of the relationship.</param>
+		/// <param name="target">ModelDiagramData to use as the target of the relationship.</param>
+		public ModelRootHasModelDiagrams(ModelRoot source, ModelDiagramData target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(ModelRootHasModelDiagrams.ModelRootDomainRoleId, source), new DslModeling::RoleAssignment(ModelRootHasModelDiagrams.ModelDiagramDataDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasModelDiagrams(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasModelDiagrams(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasModelDiagrams(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasModelDiagrams(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region ModelRoot domain role code
+		
+		/// <summary>
+		/// ModelRoot domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelRootDomainRoleId = new global::System.Guid(0x76e3ca2c, 0x137a, 0x4b7f, 0xa6, 0x1b, 0xcf, 0xb0, 0xe4, 0xfe, 0x55, 0x90);
+		
+		/// <summary>
+		/// DomainRole ModelRoot
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelRoot.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelRoot.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Diagrams", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelRoot.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.PropagatesCopyToLinkAndOppositeRolePlayer, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("76e3ca2c-137a-4b7f-a61b-cfb0e4fe5590")]
+		public virtual ModelRoot ModelRoot
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelRoot)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelRootDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelRootDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access ModelRoot of a ModelDiagramData
+		/// <summary>
+		/// Gets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static ModelRoot GetModelRoot(ModelDiagramData element)
+		{
+			return DslModeling::DomainRoleInfo.GetLinkedElement(element, ModelDiagramDataDomainRoleId) as ModelRoot;
+		}
+		
+		/// <summary>
+		/// Sets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static void SetModelRoot(ModelDiagramData element, ModelRoot newModelRoot)
+		{
+			DslModeling::DomainRoleInfo.SetLinkedElement(element, ModelDiagramDataDomainRoleId, newModelRoot);
+		}
+		#endregion
+		#region ModelDiagramData domain role code
+		
+		/// <summary>
+		/// ModelDiagramData domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelDiagramDataDomainRoleId = new global::System.Guid(0x669f90c2, 0x5bc9, 0x475d, 0xb0, 0x7b, 0x1a, 0xe3, 0x58, 0xcb, 0xb6, 0x71);
+		
+		/// <summary>
+		/// DomainRole ModelDiagramData
+		/// Description for
+		/// Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.ModelDiagramData
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelDiagramData.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelDiagramData.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "ModelRoot", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams/ModelDiagramData.PropertyDisplayName", PropagatesDelete = true,  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.One)]
+		[DslModeling::DomainObjectId("669f90c2-5bc9-475d-b07b-1ae358cbb671")]
+		public virtual ModelDiagramData ModelDiagramData
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelDiagramData)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelDiagramDataDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelDiagramDataDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Diagrams of a ModelRoot
+		/// <summary>
+		/// Gets a list of Diagrams.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelDiagramData> GetDiagrams(ModelRoot element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelDiagramData>, ModelDiagramData>(element, ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelRoot link accessor
+		/// <summary>
+		/// Get the list of ModelRootHasModelDiagrams links to a ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> GetLinksToDiagrams ( global::Sawczyn.EFDesigner.EFModel.ModelRoot modelRootInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams>(modelRootInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelDiagramData link accessor
+		/// <summary>
+		/// Get the ModelRootHasModelDiagrams link to a ModelDiagramData.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams GetLinkToModelRoot (global::Sawczyn.EFDesigner.EFModel.ModelDiagramData modelDiagramDataInstance)
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams>(modelDiagramDataInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.ModelDiagramDataDomainRoleId);
+			global::System.Diagnostics.Debug.Assert(links.Count <= 1, "Multiplicity of ModelDiagramData not obeyed.");
+			if ( links.Count == 0 )
+			{
+				return null;
+			}
+			else
+			{
+				return links[0];
+			}
+		}
+		#endregion
+		#region ModelRootHasModelDiagrams instance accessors
+		
+		/// <summary>
+		/// Get any ModelRootHasModelDiagrams links between a given ModelRoot and a ModelDiagramData.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> GetLinks( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelDiagramData target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams link in links )
+			{
+				if ( target.Equals(link.ModelDiagramData) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one ModelRootHasModelDiagrams link between a given ModelRootand a ModelDiagramData.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams GetLink( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelDiagramData target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasModelDiagrams link in links )
+			{
+				if ( target.Equals(link.ModelDiagramData) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+

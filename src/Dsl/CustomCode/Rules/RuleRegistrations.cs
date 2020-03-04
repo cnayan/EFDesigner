@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Sawczyn.EFDesigner.EFModel.CustomCode.Rules;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
@@ -10,15 +9,27 @@ namespace Sawczyn.EFDesigner.EFModel
       {
          typeof(AssociationAddRules),
          typeof(AssociationChangeRules),
+         typeof(AssociationDeletingRules),
+         typeof(BidirectionalAssociationAddRule),
+         typeof(ClassShapeAddRules),
+         typeof(EnumShapeAddRules),
          typeof(GeneralizationAddRules),
          typeof(GeneralizationChangeRules),
+         typeof(GeneralizationDeletingRules),
+         typeof(ModelAttributeAddRules),
          typeof(ModelAttributeChangeRules),
          typeof(ModelClassAddRules),
          typeof(ModelClassChangeRules),
+         typeof(ModelClassDeletingRules),
+         typeof(ModelDiagramDataAddRules),
+         typeof(ModelDiagramDataChangeRules),
+         typeof(ModelDiagramDataDeleteRules),
          typeof(ModelEnumChangeRules),
+         typeof(ModelEnumDeleteRules),
          typeof(ModelEnumValueAddRules),
          typeof(ModelEnumValueChangeRules),
-         typeof(ModelRootChangeRules)
+         typeof(ModelRootChangeRules),
+         typeof(UnidirectionalAssociationAddRule)
       };
 
       protected override Type[] GetCustomDomainModelTypes()

@@ -3,19 +3,35 @@ using Microsoft.VisualStudio.Modeling;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
-   public abstract partial class ClassShapeBase
+   public abstract partial class ClassShapeBase: IHasStore
    {
+      private static string GetDisplayPropertyFromModelClassForAssociationsCompartment(ModelElement element)
+      {
+         Association association = (Association)element;
+         ModelClass target = association.Target;
+         
+         // ReSharper disable once ConvertIfStatementToReturnStatement
+         if (!string.IsNullOrEmpty(association.TargetPropertyName))
+            return $"{association.TargetPropertyName} : {target.Name}";
+
+         return target.Name;
+      }
+
+      private static string GetDisplayPropertyFromModelClassForSourcesCompartment(ModelElement element)
+      {
+         BidirectionalAssociation association = (BidirectionalAssociation)element;
+         ModelClass source = association.Source;
+
+         // ReSharper disable once ConvertIfStatementToReturnStatement
+         if (!string.IsNullOrEmpty(association.SourcePropertyName))
+            return $"{association.SourcePropertyName} : {source.Name}";
+
+         return source.Name;
+      }
+
       private static string GetDisplayPropertyFromModelClassForAttributesCompartment(ModelElement element)
       {
-         ModelAttribute attribute = (ModelAttribute)element;
-
-         string nullable = attribute.Required ? "" : "?";
-         string name = attribute.Name;
-         string type = attribute.Type;
-         string length = attribute.MaxLength > 0 ? $"[{attribute.MaxLength}]" : "";
-         string initial = !string.IsNullOrEmpty(attribute.InitialValue) ? " = " + attribute.InitialValue : "";
-
-         return $"{name} : {type}{nullable}{length}{initial}";
+         return ((ModelAttribute)element).ToDisplayString();
       }
 
       internal sealed partial class FillColorPropertyHandler

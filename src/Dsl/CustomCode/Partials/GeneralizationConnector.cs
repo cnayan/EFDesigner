@@ -2,14 +2,13 @@
 
 namespace Sawczyn.EFDesigner.EFModel
 {
-   public partial class GeneralizationConnector
+   public partial class GeneralizationConnector: IHasStore
    {
       public override bool HasToolTip => true;
 
       public override string GetToolTipText(DiagramItem item)
       {
-         Generalization generalization = item.Shape.ModelElement as Generalization;
-         return generalization != null
+         return item.Shape.ModelElement is Generalization generalization
                    ? $"{generalization.Subclass.Name} inherits from {generalization.Superclass.Name}"
                    : string.Empty;
       }

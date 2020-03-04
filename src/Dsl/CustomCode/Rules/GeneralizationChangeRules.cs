@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
+
 using Microsoft.VisualStudio.Modeling;
 
 namespace Sawczyn.EFDesigner.EFModel
@@ -13,20 +13,28 @@ namespace Sawczyn.EFDesigner.EFModel
          base.ElementPropertyChanged(e);
 
          Generalization element = (Generalization)e.ModelElement;
+         if (element.IsDeleted)
+            return;
+
          Store store = element.Store;
          Transaction current = store.TransactionManager.CurrentTransaction;
 
-         if (current.IsSerializing)
+         if (current.IsSerializing || ModelRoot.BatchUpdating)
+            return;
+
+         if (Equals(e.NewValue, e.OldValue))
             return;
 
          switch (e.DomainProperty.Name)
          {
             case "Superclass":
             case "Subclass":
+
                if (!element.IsInCircularInheritance())
                {
+                  ErrorDisplay.Show($"{element.Subclass.Name} -> {element.Superclass.Name}: That inheritance link would cause a circular reference.");
                   current.Rollback();
-                  MessageBox.Show("That inheritance link would cause a circular reference.");
+
                   return;
                }
 
@@ -54,11 +62,12 @@ namespace Sawczyn.EFDesigner.EFModel
 
                   if (nameClashes.Any())
                   {
+                     string nameClashList = string.Join("\n   ", nameClashes);
+                     ErrorDisplay.Show($"{element.Subclass.Name} -> {element.Superclass.Name}: That inheritance link would cause name clashes. Resolve the following before setting the inheritance:\n   " + nameClashList);
                      current.Rollback();
-                     string nameClashList = string.Join(", ", nameClashes);
-                     MessageBox.Show("That inheritance link would cause name clashes. Resolve the following before setting the inheritance: " + nameClashList);
                   }
                }
+
                break;
          }
       }

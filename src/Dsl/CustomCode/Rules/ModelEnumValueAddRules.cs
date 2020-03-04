@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+
 using Microsoft.VisualStudio.Modeling;
 
 namespace Sawczyn.EFDesigner.EFModel
@@ -16,18 +13,19 @@ namespace Sawczyn.EFDesigner.EFModel
 
          ModelEnumValue element = (ModelEnumValue)e.ModelElement;
          ModelEnum enumElement = element.Enum;
-         
+
          Store store = element.Store;
          Transaction current = store.TransactionManager.CurrentTransaction;
 
-         if (current.IsSerializing)
+         if (current.IsSerializing || ModelRoot.BatchUpdating)
             return;
 
-         enumElement.SetFlagValues();
+         enumElement.SetFlagValue(element);
 
          if (!enumElement.IsFlags)
          {
             bool hasDuplicates = enumElement.Values.Any(x => x != element && x.Value == element.Value);
+
             if (hasDuplicates)
                element.Value = null;
          }

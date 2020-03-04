@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
-   public partial class CommentConnector
+   public partial class CommentConnector: IHasStore
    {
       protected override int ModifyLuminosity(int currentLuminosity, DiagramClientView view)
       {

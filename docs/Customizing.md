@@ -12,8 +12,17 @@ later regenerated.
 The generated code also creates partial methods at locations that have historically shown themselves to be common
 places for extension. Those are:
 
-   - Your DbContext-derived class (`CustomInit`, `OnModelCreatingImpl`, and `OnModelCreatedImpl`)
-   - Each persistent entity (`Init`)
+   - **Your DbContext-derived class**
+     - `CustomInit` - Runs in the constructor of your database context. This is called in each constructor, so should hold common setup code for your context no matter how it's constructed.
+     - `OnModelCreatingImpl` - Runs before the code that creates the model in memory.
+     - `OnModelCreatedImpl` - Runs after the code that creates the model in memory.
+     - `OnBeforeChangesSaved` - Runs before `SaveChanges` processing. Put code here that does common things you want done before any objects are saved (update timestamps, etc. )
+     - `OnAfterChangesSaved` - Runs after `SaveChanges` processing. Put code here that does common things you want done after objects are saved. Note that new objects will have ID values at this point, if you have database-generated IDs in play.
+   - **Each persistent entity**
+     - `Init` - Runs in the object's constructor. Here is where you can add custom constructor behavior, since the constructor itself is generated to ensure the proper containers are created, required parameters are validated, etc.
+
+Note that, if you typically override `SaveChanges` to do custom processing, that override is already generated for you and does some work. 
+If this doesn't suit you, you can always put a copy of the appropriate `.ttinclude` file into your project and remove that bit. 
 
 Remember that partial methods, if not implemented, don't generate IL and therefore don't have
 any performance overhead, so they're an excellent means of optional behavior injection.
@@ -50,13 +59,13 @@ When you find it, you'll see five .ttinclude files there:
 </tbody>
 </table>
 
-Decide what you want to replace and copy the file into your project directory. Modify at will ...
-the templating engine will find your local copy before it looks anywhere else. That will customize
-the code generation for that project. If you want to globally change how code is generated, edit the
-`.ttinclude` files directly in the install directory. Be aware, though, that updates will overwrite
-those files, and you'll have to go through the excercise of editing them whenever you install a
-newer version of the designer. (If you feel strongly that you have a really good improvement, 
-you can always submit it as a pull request!)
+Decide what you want to replace and copy the file into the folder containing your .efmodel and .tt
+files. Modify at will; the templating engine will find your local copy before it looks anywhere else.
+That will customize the code generation for that project. If you want to globally change how code
+is generated, edit the `.ttinclude` files directly in the install directory. Be aware, though, that
+updates will overwrite those files, and you'll have to go through the excercise of editing them whenever
+you install a newer version of the designer. (If you feel strongly that you have a really good
+improvement,  you can always submit it as a pull request!)
 
 For code generation from the T4, the flow of events starts at the `[Model Name].tt` file in your
 project. Its template directives tell it to include the five templates listed above and then,

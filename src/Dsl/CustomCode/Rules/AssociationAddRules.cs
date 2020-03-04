@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity.Design.PluralizationServices;
+
 using Microsoft.VisualStudio.Modeling;
 
 namespace Sawczyn.EFDesigner.EFModel
@@ -15,13 +16,28 @@ namespace Sawczyn.EFDesigner.EFModel
          Transaction current = store.TransactionManager.CurrentTransaction;
          PluralizationService pluralizationService = ModelRoot.PluralizationService;
 
-         if (current.IsSerializing)
+         if (current.IsSerializing || ModelRoot.BatchUpdating)
             return;
+
+         // add unidirectional
+         //    source can't be dependent (connection builder handles this)
+         // if target is dependent,
+         //    source cardinality is 0..1
+         //    target cardinality is 0..1 
+         //    source is principal
+         if (element is UnidirectionalAssociation && element.Target.IsDependentType)
+         {
+            element.TargetMultiplicity = Multiplicity.ZeroOne;
+            element.SourceRole = EndpointRole.Principal;
+            element.TargetRole = EndpointRole.Dependent;
+         }
+
+         // add bidirectional
+         //    neither can be dependent (connection builder handles this)
 
          if (string.IsNullOrEmpty(element.TargetPropertyName))
          {
-            string rootName = element.TargetMultiplicity == Multiplicity.ZeroMany &&
-                              pluralizationService?.IsSingular(element.Target.Name) == true
+            string rootName = element.TargetMultiplicity == Multiplicity.ZeroMany && pluralizationService?.IsSingular(element.Target.Name) == true
                                  ? pluralizationService.Pluralize(element.Target.Name)
                                  : element.Target.Name;
 
@@ -38,8 +54,7 @@ namespace Sawczyn.EFDesigner.EFModel
          {
             if (string.IsNullOrEmpty(bidirectionalAssociation.SourcePropertyName))
             {
-               string rootName = element.SourceMultiplicity == Multiplicity.ZeroMany &&
-                                 pluralizationService?.IsSingular(element.Source.Name) == true
+               string rootName = element.SourceMultiplicity == Multiplicity.ZeroMany && pluralizationService?.IsSingular(element.Source.Name) == true
                                     ? pluralizationService.Pluralize(element.Source.Name)
                                     : element.Source.Name;
 
@@ -54,7 +69,6 @@ namespace Sawczyn.EFDesigner.EFModel
          }
 
          AssociationChangeRules.SetEndpointRoles(element);
-
       }
    }
 }

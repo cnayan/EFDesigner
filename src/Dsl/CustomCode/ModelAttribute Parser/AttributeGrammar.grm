@@ -44,10 +44,16 @@ CharLiteral    = '' ( {Char Ch} | '\'{Printable} )''
 <Max Length>
        ::= '[' DecLiteral ']'
         |  '(' DecLiteral ')'
+        |  '[max]'
+        |  '(max)'
         
 <Lengths>
        ::= '[' DecLiteral '-' DecLiteral ']'
+        |  '[' DecLiteral '-' 'max' ']'
         |  '(' DecLiteral '-' DecLiteral ')'
+        |  '(' DecLiteral '-' 'max' ')'
+        |  '(' DecLiteral '-' ')'
+        |  '[' DecLiteral '-' ']'
         |  <Max Length>
 
 <Type Spec>
@@ -58,6 +64,9 @@ CharLiteral    = '' ( {Char Ch} | '\'{Printable} )''
 
 <Type>
        ::= Identifier
+        
+<EnumValue>
+       ::= Identifier '.' Identifier  
 
 <Visibility>
        ::= 'public'
@@ -70,6 +79,7 @@ CharLiteral    = '' ( {Char Ch} | '\'{Printable} )''
         |  RealLiteral
         |  StringLiteral
         |  CharLiteral
+        |  <EnumValue>
 
 <Input>
        ::= <Visibility> <Type Spec> <Name Spec> <Initializer>

@@ -15,13 +15,14 @@
     <AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <SignAssembly>true</SignAssembly>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GacTargetOutput>false</GacTargetOutput>
     <StartupObject>
     </StartupObject>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <LangVersion>7.3</LangVersion>
+    <NoWarn>CS3001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,10 +44,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Sawczyn.EFDesigner.EFModel.Dsl.xml</DocumentationFile>
   </PropertyGroup>
   <!-- Project specific properties to control T4/DSL targets -->
   <PropertyGroup>
     <TransformOnBuild>True</TransformOnBuild>
+    <OverwriteReadOnlyOutputFiles>true</OverwriteReadOnlyOutputFiles>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(DslTargetsPath)\Microsoft.DSLTools.targets" />
@@ -61,14 +68,9 @@
       <HintPath>..\Libraries\GOLD Engine.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.ConnectionUI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
-      <HintPath>..\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
-      <HintPath>..\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.Modeling.Sdk$(DslToolsVersionSuffix)" />
     <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams$(DslToolsVersionSuffix)" />
+    <Reference Include="Microsoft.VisualStudio.Modeling.SDK.Integration.15.0, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating$(T4VersionSuffix)" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0" />
@@ -83,38 +85,113 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Utilities\ParsingModels\AssociationRole.cs">
+      <Link>CustomCode\ParsingModels\AssociationRole.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelBidirectionalAssociation.cs">
+      <Link>CustomCode\ParsingModels\ModelBidirectionalAssociation.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelClass.cs">
+      <Link>CustomCode\ParsingModels\ModelClass.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelEnum.cs">
+      <Link>CustomCode\ParsingModels\ModelEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelEnumValue.cs">
+      <Link>CustomCode\ParsingModels\ModelEnumValue.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelProperty.cs">
+      <Link>CustomCode\ParsingModels\ModelProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelRoot.cs">
+      <Link>CustomCode\ParsingModels\ModelRoot.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\ModelUnidirectionalAssociation.cs">
+      <Link>CustomCode\ParsingModels\ModelUnidirectionalAssociation.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\Multiplicity.cs">
+      <Link>CustomCode\ParsingModels\Multiplicity.cs</Link>
+    </Compile>
+    <Compile Include="..\Utilities\ParsingModels\Visibility.cs">
+      <Link>CustomCode\ParsingModels\Visibility.cs</Link>
+    </Compile>
     <Compile Include="CustomCode\Extensions\ColorExtensions.cs" />
     <Compile Include="CustomCode\Extensions\DiagramViewExtensions.cs" />
+    <Compile Include="CustomCode\Extensions\ModelClassExtensions.cs" />
     <Compile Include="CustomCode\Extensions\ModelElementExtensions.cs" />
+    <Compile Include="CustomCode\Extensions\MultiplicityExtensions.cs" />
+    <Compile Include="CustomCode\Extensions\PropertyDescriptorCollectionExtensions.cs" />
+    <Compile Include="CustomCode\Extensions\StringExtensions.cs" />
+    <Compile Include="CustomCode\Extensions\SyntaxNodeExtensions.cs" />
     <Compile Include="CustomCode\Gestures\CompartmentDragMouseAction.cs" />
+    <Compile Include="CustomCode\Modeling\ViewContext.cs" />
     <Compile Include="CustomCode\Partials\AssociationConnector.cs" />
-    <Compile Include="CustomCode\Partials\AssociationTypeDescriptor.cs" />
+    <Compile Include="CustomCode\Domain Types\Namespaces.cs" />
+    <Compile Include="CustomCode\Partials\ModelDiagramData.cs" />
+    <Compile Include="CustomCode\Rules\AssociationDeletingRules.cs" />
+    <Compile Include="CustomCode\Rules\BidirectionalAssociationAddRules.cs" />
+    <Compile Include="CustomCode\Rules\ClassShapeAddRules.cs" />
+    <Compile Include="CustomCode\Rules\EnumShapeAddRules.cs" />
+    <Compile Include="CustomCode\Rules\ModelDiagramDataAddRules.cs" />
+    <Compile Include="CustomCode\Rules\ModelDiagramDataChangeRules.cs" />
+    <Compile Include="CustomCode\Rules\ModelDiagramDataDeleteRules.cs" />
+    <Compile Include="CustomCode\Rules\ModelEnumDeleteRules.cs" />
+    <Compile Include="CustomCode\Rules\UnidirectionalAssociationAddRules.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IHasStore.cs" />
+    <Compile Include="CustomCode\Type Converters\MaxLengthTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\MinLengthTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Descriptors\AssociationTypeDescriptor.cs" />
     <Compile Include="CustomCode\Partials\BidirectionalAssociation.cs" />
+    <Compile Include="CustomCode\Connection Builders\BidirectionalAssociationBuilder.cs" />
     <Compile Include="CustomCode\Partials\BidirectionalConnector.cs" />
+    <Compile Include="CustomCode\Partials\Comment.cs" />
+    <Compile Include="CustomCode\Partials\CommentBoxShape.cs" />
     <Compile Include="CustomCode\Partials\CommentConnector.cs" />
     <Compile Include="CustomCode\Partials\EFModelDiagram.cs" />
     <Compile Include="CustomCode\Partials\EFModelSerializationHelper.cs" />
     <Compile Include="CustomCode\Partials\EnumShape.cs" />
     <Compile Include="CustomCode\Partials\EnumShapeBase.cs" />
     <Compile Include="CustomCode\Partials\Generalization.cs" />
+    <Compile Include="CustomCode\Connection Builders\GeneralizationBuilder.cs" />
     <Compile Include="CustomCode\Partials\GeneralizationConnector.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IDisplaysWarning.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IHighlightFromModelExplorer.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IModelElementInCompartment.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IModelElementWithCompartments.cs" />
+    <Compile Include="CustomCode\ModelElement Interfaces\IMouseActionTarget.cs" />
     <Compile Include="CustomCode\Partials\ModelAttribute.cs" />
-    <Compile Include="CustomCode\Partials\ModelAttributeTypeDescriptor.cs" />
+    <Compile Include="CustomCode\Rules\GeneralizationDeletingRules.cs" />
+    <Compile Include="CustomCode\Rules\ModelClassDeletingRules.cs" />
+    <Compile Include="CustomCode\Type Descriptors\ModelAttributeTypeDescriptor.cs" />
     <Compile Include="CustomCode\Partials\ModelEnum.cs" />
-    <Compile Include="CustomCode\Partials\ModelEnumTypeDescriptor.cs" />
+    <Compile Include="CustomCode\Type Descriptors\ModelEnumTypeDescriptor.cs" />
     <Compile Include="CustomCode\Partials\ModelEnumValue.cs" />
     <Compile Include="CustomCode\Partials\ModelRoot.cs" />
+    <Compile Include="CustomCode\Type Descriptors\ModelRootTypeDescriptor.cs" />
+    <Compile Include="CustomCode\Connection Builders\UnidirectionalAssociationBuilder.cs" />
+    <Compile Include="CustomCode\Rules\ModelAttributeAddRules.cs" />
+    <Compile Include="CustomCode\Utilities\DataConnectionConfiguration.cs" />
+    <Compile Include="CustomCode\Utilities\Import\AssemblyProcessor.cs" />
+    <Compile Include="CustomCode\Utilities\Import\FileDropHelper.cs" />
+    <Compile Include="CustomCode\Utilities\Import\IFileProcessor.cs" />
+    <Compile Include="CustomCode\Utilities\Import\TextFileProcessor.cs" />
+    <Compile Include="CustomCode\Utilities\Import\XMLDocumentation.cs" />
+    <Compile Include="CustomCode\Domain Types\OutputLocations.cs" />
+    <Compile Include="CustomCode\Utilities\PropertyDefaults.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\ModelDisplay.cs" />
+    <Compile Include="CustomCode\Utilities\ModelMigration.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\NuGetHelper.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\NuGetDisplay.cs" />
     <Compile Include="CustomCode\Partials\UnidirectionalConnector.cs" />
     <Compile Include="CustomCode\Rules\AssociationAddRules.cs" />
     <Compile Include="CustomCode\Rules\AssociationChangeRules.cs" />
@@ -128,30 +205,69 @@
     <Compile Include="CustomCode\Rules\ModelEnumValueChangeRules.cs" />
     <Compile Include="CustomCode\Rules\ModelRootChangeRules.cs" />
     <Compile Include="CustomCode\Rules\RuleRegistrations.cs" />
-    <Compile Include="CustomCode\Utilities\AttributeParser.cs" />
-    <Compile Include="CustomCode\Utilities\BaseClassTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\CollectionTypeTypeConverter.cs" />
-    <Compile Include="CustomCode\Partials\ModelClassTypeDescriptor.cs" />
+    <Compile Include="CustomCode\ModelAttribute Parser\AttributeParser.cs" />
+    <Compile Include="CustomCode\Utilities\PresentationHelper.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\BooleanQuestionDisplay.cs" />
+    <Compile Include="CustomCode\Type Converters\BaseClassTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\CollectionTypeTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Descriptors\ModelClassTypeDescriptor.cs" />
     <Compile Include="CustomCode\Utilities\ConnectionStringEditor.cs" />
     <Compile Include="CustomCode\Utilities\EFCoreValidator.cs" />
-    <Compile Include="CustomCode\Utilities\IdentityAttributeTypeTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\ModelAttributeNameProvider.cs" />
-    <Compile Include="CustomCode\Utilities\ModelClassNameProvider.cs" />
-    <Compile Include="CustomCode\Utilities\ModelEnumNameProvider.cs" />
-    <Compile Include="CustomCode\Utilities\MultiplicityTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\NavigationEndpointTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\EFPackageVersionTypeConverter.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\ErrorDisplay.cs" />
+    <Compile Include="CustomCode\Type Converters\IdentityAttributeTypeTypeConverter.cs" />
+    <Compile Include="CustomCode\Name Providers\ModelAttributeNameProvider.cs" />
+    <Compile Include="CustomCode\Name Providers\ModelClassNameProvider.cs" />
+    <Compile Include="CustomCode\Name Providers\ModelEnumNameProvider.cs" />
+    <Compile Include="CustomCode\Type Converters\MultiplicityTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\NavigationEndpointTypeConverter.cs" />
     <Compile Include="CustomCode\Utilities\NavigationProperty.cs" />
-    <Compile Include="CustomCode\Utilities\AttributeTypeTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\ProjectDirectoryTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\SourceMultiplicityTypeConverter.cs" />
-    <Compile Include="CustomCode\Utilities\TargetMultiplicityTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\AttributeTypeTypeConverter.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\Context.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\Converter.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\NuGetPackages.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\PackageData.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\TypeEnum.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\TypeEnumConverter.cs" />
+    <Compile Include="CustomCode\Utilities\Nuget\Models\Version.cs" />
+    <Compile Include="CustomCode\Type Converters\ProjectDirectoryTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\SourceMultiplicityTypeConverter.cs" />
+    <Compile Include="CustomCode\Type Converters\TargetMultiplicityTypeConverter.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\ChoiceDisplay.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\StatusDisplay.cs" />
     <Compile Include="CustomCode\Utilities\TrackingHelper.cs" />
-    <Compile Include="CustomCode\Utilities\EFModelSerializationHelperBase.cs" />
-    <Compile Include="CustomCode\Utilities\TypeConverterBase.cs" />
-    <Compile Include="MefExtension\GestureExtensionEnablement.cs">
+    <Compile Include="CustomCode\Partials\EFModelSerializationHelperBase.cs" />
+    <Compile Include="CustomCode\Type Converters\TypeConverterBase.cs" />
+    <Compile Include="CustomCode\Utilities\UIProxies\WarningDisplay.cs" />
+    <Compile Include="GeneratedCode\DomainClasses.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GestureExtensionEnablement.tt</DependentUpon>
+      <DependentUpon>DomainClasses.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedCode\FixUpAllDiagrams.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixUpAllDiagrams.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedCode\SerializationHelper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SerializationHelper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedCode\SerializationHelperAllDiagrams.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SerializationHelperAllDiagrams.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedCode\Serializer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Serializer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedCode\SynchronizationHelper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynchronizationHelper.tt</DependentUpon>
     </Compile>
     <Compile Include="MefExtension\GestureExtensionController.cs">
       <DependentUpon>GestureExtensionController.tt</DependentUpon>
@@ -163,6 +279,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DesignerExtensionMetaDataAttribute.tt</DependentUpon>
     </Compile>
+    <Compile Include="MefExtension\GestureExtensionEnablement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestureExtensionEnablement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,7 +293,14 @@
     <None Include="..\Key.snk">
       <Link>Key.snk</Link>
     </None>
+    <None Include="app.config" />
     <None Include="CustomCode\ModelAttribute Parser\AttributeGrammar.egt" />
+    <None Include="GeneratedCode\LanguageNameSchema.xsd">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LanguageNameSchema.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GeneratedCode\SerializationHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
@@ -202,11 +331,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="GeneratedCode\DomainClasses.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DomainClasses.tt</DependentUpon>
-    </Compile>
     <Compile Include="GeneratedCode\DomainRelationships.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,11 +352,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="GeneratedCode\SerializationHelper.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SerializationHelper.tt</DependentUpon>
-    </Compile>
     <Compile Include="GeneratedCode\Shapes.cs">
       <DependentUpon>Shapes.tt</DependentUpon>
       <SubType>Code</SubType>
@@ -252,13 +371,51 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\Serializer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Serializer.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GeneratedCode\FixUpAllDiagrams.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FixUpAllDiagrams.cs</LastGenOutput>
+    </Content>
+    <Content Include="GeneratedCode\LanguageNameSchema.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LanguageNameSchema.xsd</LastGenOutput>
+    </Content>
+    <Content Include="GeneratedCode\SerializationHelperAllDiagrams.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SerializationHelperAllDiagrams.cs</LastGenOutput>
+    </Content>
+    <Content Include="GeneratedCode\SynchronizationHelper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SynchronizationHelper.cs</LastGenOutput>
+    </Content>
+    <None Include="Templates\Diagram.tt" />
+    <None Include="Templates\DomainClassSerializer.tt" />
+    <None Include="Templates\DomainModel.tt" />
+    <None Include="Templates\DomainModelCodeGenerator.tt" />
+    <None Include="Templates\DomainSerializer.tt" />
+    <None Include="Templates\ToolboxHelper.tt" />
+    <Content Include="Resources\cardinality-0-0.png" />
+    <Content Include="Resources\cardinality-0-1.png" />
+    <Content Include="Resources\cardinality-0-many.png" />
+    <Content Include="Resources\cardinality-1-0.png" />
+    <Content Include="Resources\cardinality-1-1.png" />
+    <Content Include="Resources\cardinality-1-many.png" />
+    <Content Include="Resources\cardinality-many-0.png" />
+    <Content Include="Resources\cardinality-many-1.png" />
+    <Content Include="Resources\cardinality-many-many.png" />
+    <Content Include="Resources\Enumerator_16x.png" />
+    <Content Include="Resources\EnumItem_16x.png" />
+    <None Include="Resources\Move.cur" />
+    <Content Include="Resources\EnumValue.bmp" />
+    <Content Include="Resources\EnumValue.png" />
+    <Content Include="Resources\ForeignKey.png" />
+    <Content Include="Resources\ForeignKeyIdentity.png" />
+    <Content Include="Resources\KeyRight_left_16x.png" />
+    <Content Include="Resources\No.png" />
+    <Content Include="Resources\ShowDiagramPane_16x.png" />
+    <Content Include="Resources\TransientClass.png" />
+    <Content Include="Resources\Warning.png" />
     <None Include="DslDefinition.dsl.diagram">
       <DependentUpon>DslDefinition.dsl</DependentUpon>
     </None>
@@ -340,6 +497,7 @@
     <Content Include="Resources\Association.bmp" />
     <Content Include="Resources\AssociationLinkTool.bmp" />
     <Content Include="Resources\AssociationTool.bmp" />
+    <Content Include="Resources\Attribute.bmp" />
     <Content Include="Resources\Calculated.png" />
     <Content Include="Resources\CalculatedInternal.png" />
     <Content Include="Resources\CalculatedProtected.png" />
@@ -369,7 +527,6 @@
       <LastGenOutput>ToolboxHelper.cs</LastGenOutput>
     </None>
     <None Include="CustomCode\ModelAttribute Parser\AttributeGrammar.grm" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4df5-91F0-309BEEBAD82D}" />
@@ -384,8 +541,161 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DataConnectionDialog">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis">
+      <Version>3.5.0-beta1-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+      <Version>2.9.8</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.bundle_green">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.linux">
+      <Version>1.1.14</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.osx">
+      <Version>1.1.14</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.v110_xp">
+      <Version>1.1.14</Version>
+    </PackageReference>
+    <PackageReference Include="System.AppContext">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Buffers">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Collections">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Collections.Concurrent">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Composition">
+      <Version>1.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Console">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.Debug">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.FileVersionInfo">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.StackTrace">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.Tools">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Dynamic.Runtime">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Globalization">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.IO.Compression">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.IO.FileSystem">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Linq">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Linq.Expressions">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.Numerics.Vectors">
+      <Version>4.6.0-preview5.19224.8</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reflection">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Resources.ResourceManager">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.Extensions">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.InteropServices">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.Numerics">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Algorithms">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.X509Certificates">
+      <Version>4.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Spatial">
+      <Version>5.8.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encoding">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encoding.CodePages">
+      <Version>4.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encoding.Extensions">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Extensions">
+      <Version>4.6.0-preview.18571.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Parallel">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Thread">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.ReaderWriter">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.XDocument">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.XmlDocument">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.XPath.XDocument">
+      <Version>4.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
   </PropertyGroup>
 </Project>

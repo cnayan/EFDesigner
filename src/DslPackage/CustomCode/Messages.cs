@@ -1,44 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.Shell;
 
-namespace Sawczyn.EFDesigner.EFModel.DslPackage.CustomCode
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
+
+namespace Sawczyn.EFDesigner.EFModel
 {
    internal static class Messages
    {
-      private static ErrorListProvider _errorListProvider;
+      private static readonly string MessagePaneTitle = "Entity Framework Designer";
 
-      public static void Initialize(IServiceProvider serviceProvider)
+      private static IVsOutputWindow _outputWindow;
+      private static IVsOutputWindow OutputWindow
       {
-         _errorListProvider = new ErrorListProvider(serviceProvider);
+         get
+         {
+            return _outputWindow ?? (_outputWindow = Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow);
+         }
+      }
+
+      private static IVsOutputWindowPane _outputWindowPane;
+      private static IVsOutputWindowPane OutputWindowPane
+      {
+         get
+         {
+            if (_outputWindowPane == null)
+            {
+               Guid paneGuid = new Guid(Constants.EFDesignerOutputPane);
+               OutputWindow?.GetPane(ref paneGuid, out _outputWindowPane);
+
+               if (_outputWindowPane == null)
+               {
+                  OutputWindow?.CreatePane(ref paneGuid, MessagePaneTitle, 1, 1);
+                  OutputWindow?.GetPane(ref paneGuid, out _outputWindowPane);
+               }
+            }
+
+            return _outputWindowPane;
+         }
+      }
+
+      private static IVsStatusbar _statusBar;
+
+      private static IVsStatusbar StatusBar
+      {
+         get
+         {
+            return _statusBar ?? (_statusBar = Package.GetGlobalService(typeof(SVsStatusbar)) as IVsStatusbar);
+         }
       }
 
       public static void AddError(string message)
       {
-         AddTask(message, TaskErrorCategory.Error);
+         AddMessage(message, "Error");
       }
 
       public static void AddWarning(string message)
       {
-         AddTask(message, TaskErrorCategory.Warning);
+         AddMessage(message, "Warning");
       }
 
-      public static void AddMessage(string message)
+      public static void AddMessage(string message, string prefix = null)
       {
-         AddTask(message, TaskErrorCategory.Message);
+         OutputWindowPane?.OutputString($"{(string.IsNullOrWhiteSpace(prefix) ? "" : prefix + ": ")}{message}{(message.EndsWith("\n") ? "" : "\n")}");
+         OutputWindowPane?.Activate();
       }
 
-      private static void AddTask(string message, TaskErrorCategory category)
+      public static string LastStatusMessage
       {
-         _errorListProvider.Tasks.Add(new ErrorTask
-                                      {
-                                         Category = TaskCategory.User,
-                                         ErrorCategory = category,
-                                         Text = message
-                                      });
+         get;
+         set;
+      }
+
+      public static void AddStatus(string message, Microsoft.VisualStudio.Shell.Interop.Constants? glyph = null)
+      {
+         StatusBar.IsFrozen(out int frozen);
+         if (frozen == 0)
+         {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+               StatusBar.SetText(string.Empty);
+               return;
+            }
+
+            if (glyph != null && glyph.Value.ToString().StartsWith("SBAI_"))
+            {
+               object icon = (short)glyph.Value;
+               StatusBar.Animation(1, ref icon);
+            }
+            StatusBar.SetText(message);
+            LastStatusMessage = message;
+         }
+      }
+
+      public static string GetChoice(string title, IEnumerable<string> choices)
+      {
+         ChooseForm form = new ChooseForm {Title = title};
+         form.SetChoices(choices);
+
+         return form.ShowDialog() == System.Windows.Forms.DialogResult.OK
+                   ? form.Selection
+                   : null;
       }
    }
 }

@@ -1,9 +1,10 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
+
 using Microsoft.VisualStudio.Modeling;
-using Sawczyn.EFDesigner.EFModel.CustomCode.Rules;
+
+using Sawczyn.EFDesigner.EFModel.Extensions;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
@@ -15,10 +16,17 @@ namespace Sawczyn.EFDesigner.EFModel
          base.ElementPropertyChanged(e);
 
          ModelEnum element = (ModelEnum)e.ModelElement;
-         Store store = element.Store;
-         Transaction current = store.TransactionManager.CurrentTransaction;
+         if (element.IsDeleted)
+            return;
 
-         if (current.IsSerializing)
+         Store store = element.Store;
+         Transaction currentTransaction = store.TransactionManager.CurrentTransaction;
+         ModelRoot modelRoot = store.ModelRoot();
+
+         if (currentTransaction.IsSerializing)
+            return;
+
+         if (Equals(e.NewValue, e.OldValue))
             return;
 
          string errorMessage = null;
@@ -26,43 +34,60 @@ namespace Sawczyn.EFDesigner.EFModel
          switch (e.DomainProperty.Name)
          {
             case "Name":
-               string newName = (string)e.NewValue;
-               if (current.Name.ToLowerInvariant() == "paste")
+
+               if (currentTransaction.Name.ToLowerInvariant() == "paste")
                   return;
 
-               if (current.Name.ToLowerInvariant() != "paste" && (string.IsNullOrWhiteSpace(newName) || !CodeGenerator.IsValidLanguageIndependentIdentifier(newName)))
+               if (string.IsNullOrWhiteSpace(element.Name) || !CodeGenerator.IsValidLanguageIndependentIdentifier(element.Name))
                   errorMessage = "Name must be a valid .NET identifier";
-               else if (store.ElementDirectory
-                             .AllElements
-                             .OfType<ModelClass>()
-                             .Any(x => x.Name == newName))
+               else if (store.Get<ModelClass>().Any(x => x.Name == element.Name))
                   errorMessage = "Enum name already in use by a class";
-               else if (store.ElementDirectory
-                             .AllElements
-                             .OfType<ModelEnum>()
-                             .Except(new[] {element})
-                             .Any(x => x.Name == newName))
+               else if (store.Get<ModelEnum>().Except(new[] {element}).Any(x => x.Name == element.Name))
                   errorMessage = "Enum name already in use by another enum";
+               else
+               {
+                  // rename type names for ModelAttributes that reference this enum
+                  foreach (ModelAttribute modelAttribute in store.Get<ModelAttribute>().Where(a => a.Type == (string)e.OldValue))
+                     modelAttribute.Type = element.Name;
+               }
 
                break;
 
             case "Namespace":
-               string newNamespace = (string)e.NewValue;
-               if (current.Name.ToLowerInvariant() != "paste")
-                  errorMessage = CommonRules.ValidateNamespace(newNamespace, CodeGenerator.IsValidLanguageIndependentIdentifier);
+
+               if (currentTransaction.Name.ToLowerInvariant() != "paste")
+                  errorMessage = CommonRules.ValidateNamespace(element.Namespace, CodeGenerator.IsValidLanguageIndependentIdentifier);
+
                break;
 
             case "IsFlags":
-               bool isFlags = (bool)e.NewValue;
+
                element.SetFlagValues();
+
+               break;
+
+            case "ValueType":
+
+               EnumValueType newValueType = (EnumValueType)e.NewValue;
+               List<ModelAttribute> modelAttributes = store.ElementDirectory
+                                                           .AllElements
+                                                           .OfType<ModelAttribute>()
+                                                           .Where(a => a.Type == element.Name && a.IsIdentity)
+                                                           .ToList();
+
+               if (modelAttributes.Any())
+               {
+                  string classList = string.Join(", ", modelAttributes.Select(a => a.ModelClass.Name + "." + a.Name));
+                  errorMessage = $"Can't change {element.Name} value type to {newValueType}. It's not a valid identity type, and {element.Name} is used as an identity type in {classList}";
+               }
 
                break;
          }
 
          if (errorMessage != null)
          {
-            current.Rollback();
-            MessageBox.Show(errorMessage);
+            currentTransaction.Rollback();
+            ErrorDisplay.Show(errorMessage);
          }
       }
    }

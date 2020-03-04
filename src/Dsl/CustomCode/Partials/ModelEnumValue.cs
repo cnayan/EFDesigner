@@ -1,26 +1,57 @@
-﻿using System.Linq;
+﻿using Microsoft.VisualStudio.Modeling;
+using Microsoft.VisualStudio.Modeling.Diagrams;
 using Microsoft.VisualStudio.Modeling.Validation;
-using Sawczyn.EFDesigner.EFModel.CustomCode.Extensions;
+using Sawczyn.EFDesigner.EFModel.Extensions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sawczyn.EFDesigner.EFModel
 {
    [ValidationState(ValidationState.Enabled)]
-   partial class ModelEnumValue : IModelElementCompartmented
+   public partial class ModelEnumValue : IModelElementInCompartment, IDisplaysWarning, IHasStore
    {
-      private ModelEnum cachedParent = null;
+      private ModelEnum cachedParent;
 
       public IModelElementWithCompartments ParentModelElement => Enum;
       public string CompartmentName => this.GetFirstShapeElement().AccessibleName;
+
+      public string GetDisplayText()
+      {
+         return $"{Enum.Name}.{Name}";
+      }
+
+#region Warning display
+
+      // set as methods to avoid issues around serialization
+
+      private bool hasWarning;
+
+      public bool GetHasWarningValue() => hasWarning;
+
+      public void ResetWarning() => hasWarning = false;
+
+      public void RedrawItem()
+      {
+         // redraw on every diagram
+         foreach (ShapeElement shapeElement in 
+               PresentationViewsSubject.GetPresentation(ParentModelElement as ModelElement).OfType<ShapeElement>().Distinct())
+            shapeElement.Invalidate();
+      }
+
+      #endregion
 
       [ValidationMethod(ValidationCategories.Open | ValidationCategories.Save | ValidationCategories.Menu)]
       // ReSharper disable once UnusedMember.Local
       private void SummaryDescriptionIsEmpty(ValidationContext context)
       {
+         if (Enum?.ModelRoot == null) return;
+
          ModelRoot modelRoot = Store.ElementDirectory.FindElements<ModelRoot>().FirstOrDefault();
-         if (modelRoot.WarnOnMissingDocumentation)
+         if (Enum != null && modelRoot?.WarnOnMissingDocumentation == true && string.IsNullOrWhiteSpace(Summary))
          {
-            if (string.IsNullOrWhiteSpace(Summary))
-               context.LogWarning($"{Enum.Name}.{Name}: Enum value should be documented", "AWMissingSummary", this);
+            context.LogWarning($"{Enum.Name}.{Name}: Enum value should be documented", "AWMissingSummary", this);
+            hasWarning = true;
+            RedrawItem();
          }
       }
 
@@ -41,5 +72,9 @@ namespace Sawczyn.EFDesigner.EFModel
 
          cachedParent?.SetFlagValues();
       }
+
+      /// <summary>Returns a string that represents the current object.</summary>
+      /// <returns>A string that represents the current object.</returns>
+      public override string ToString() => Name + (string.IsNullOrEmpty(Value) ? string.Empty : $" = {Value}");
    }
 }
